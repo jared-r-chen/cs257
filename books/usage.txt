@@ -1,3 +1,9 @@
+SYNPOSIS
+  python3 books.py title <search string>
+  python3 books.py author <search string>
+  python3 books.py years <start year> <end year>
+
+
 Name		title
 Synopsis		title String
 Description	searches database for books with String in title. Lists results alphabetically by title.
