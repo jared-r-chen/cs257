@@ -49,6 +49,13 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
+        with open(books_csv_file_name, newline='') as csvfile:
+            book_reader=csv.reader(csvfile, delimiter=',')
+            for row in csvfile:
+                author_list=row[2].split( )
+                author=Author(author_list[-2],author_list[0],)
+                book=Book(row[0],row[1],author)
+
         pass
 
     def authors(self, search_text=None):
