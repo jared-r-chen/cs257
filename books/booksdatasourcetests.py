@@ -4,7 +4,8 @@
    Author: Jared Chen, Aaron Schondorf
 '''
 
-import booksdatasource
+from booksdatasource import Author
+from booksdatasource import Book
 import unittest
 
 class BooksDataSourceTester(unittest.TestCase):
