@@ -49,12 +49,34 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
-        with open(books_csv_file_name, newline='') as csvfile:
-            book_reader=csv.reader(csvfile, delimiter=',')
-            for row in csvfile:
-                author_list=row[2].split( )
-                author=Author(author_list[-2],author_list[0],)
-                book=Book(row[0],row[1],author)
+        book_list = []
+        with open(books_csv_file_name, newline ='') as csvfile:
+            book_reader=csv.reader(csvfile, delimiter = ',')
+            for row in book_reader:
+                author_list = []
+                counter = 0;
+                for i in row[2]:
+                    if i == '(':
+                        counter = counter + 1
+                    tempString = row[2]
+                for x in range(counter):
+                    curAuthor = tempString[0: tempString.find(')') + 1]
+                    fullName = curAuthor[0:curAuthor.find('(')]
+                    wordList = fullName.split()
+                    lastName = wordList[-1]
+                    firstName = fullName[:fullName.find(lastName)]
+                    birthDate = int(curAuthor[curAuthor.find('(') + 1:curAuthor.find('-')])
+                    deathDate = None
+                    if curAuthor.find('-') + 1 != curAuthor.find(')'):
+                        deathDate = int(curAuthor[curAuthor.find('-') + 1:curAuthor.find(')')])
+                    author = Author(lastName, firstName, birthDate, deathDate)
+                    author_list.append(author)
+                book = Book(row[0], int(row[1]), author_list)
+                book_list.append(book)
+
+
+      if tempString:
+        tempString = tempString[tempString.find(')') + 6:]
 
         pass
 
@@ -64,7 +86,21 @@ class BooksDataSource:
             returns all of the Author objects. In either case, the returned list is sorted
             by surname, breaking ties using given name (e.g. Ann Brontë comes before Charlotte Brontë).
         '''
-        return []
+        authors_list = []
+
+        if search_text == None:
+            for book in self:
+                authors_list.append(book.authors)
+        else:
+            for book in self:
+                if search_text.lower in book.surname.lower + ' ' + book.given_name.lower:
+                    authors_list.append(book.authors)
+
+        def sort_func(e):
+            return = e.surname + ' ' + e.given_name
+        authors_list.sort(key = sort_func)
+
+        return authors_list
 
     def books(self, search_text=None, sort_by='title'):
         ''' Returns a list of all the Book objects in this data source whose
@@ -78,7 +114,26 @@ class BooksDataSource:
                 default -- same as 'title' (that is, if sort_by is anything other than 'year'
                             or 'title', just do the same thing you would do for 'title')
         '''
-        return []
+        books_list=[]
+
+        if search_text == None:
+            for book in self:
+                books_list.append(book)
+        else:
+            for book in self:
+                if search_text.lower in book.title:
+                    books_list.append(book)
+
+        def sort_func(e):
+            if sort_by == 'year':
+                my_key = e.pulbication_year
+            else:
+                my_key = e.title
+            return my_key
+
+        books_list.sort(key=sort_func)
+
+        return book_list
 
     def books_between_years(self, start_year=None, end_year=None):
         ''' Returns a list of all the Book objects in this data source whose publication
