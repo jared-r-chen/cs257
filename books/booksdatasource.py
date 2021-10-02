@@ -50,7 +50,7 @@ class BooksDataSource:
             a collection of Author objects and a collection of Book objects.
         '''
 
-        init_book_list = []
+        self.init_book_list = []
         with open(books_csv_file_name, newline ='') as csvfile:
             book_reader = csv.reader(csvfile, delimiter = ',')
             for row in book_reader:
@@ -73,11 +73,11 @@ class BooksDataSource:
                     author = Author(lastName, firstName, birthDate, deathDate)
                     set_author_list.append(author)
                 book = Book(row[0], int(row[1]), set_author_list)
-                init_book_list.append(book)
+                self.init_book_list.append(book)
 
 
-      if tempString:
-        tempString = tempString[tempString.find(')') + 6:]
+      #if tempString:
+        #tempString = tempString[tempString.find(')') + 6:]
 
         pass
 
@@ -90,12 +90,12 @@ class BooksDataSource:
         authors_list = []
 
         if search_text == None:
-            for book in self:
+            for book in self.init_book_list:
                 for current_author in book.authors:
                     if authors_list.count(current_author) == 0:
                         authors_list.append(current_author)
         else:
-            for book in self:
+            for book in self.init_book_list:
                 for current_author in book.authors:
                     if search_text.lower in current_author.surname.lower + ' ' + current_author.given_name.lower:
                         if authors_list.count(current_author) == 0:
@@ -123,10 +123,10 @@ class BooksDataSource:
         books_list = []
 
         if search_text == None:
-            for book in self:
+            for book in self.init_book_list:
                 books_list.append(book)
         else:
-            for book in self:
+            for book in self.init_book_list:
                 if search_text.lower in book.title:
                     books_list.append(book)
 
@@ -165,7 +165,7 @@ class BooksDataSource:
 
         for year in range(start_year, end_year+1):
             year_list = []
-            for book in self:
+            for book in self.init_book_list:
                 if book.publication_year == year:
                     year_list.append(book)
             year_list.sort(key = year_sort_func)
