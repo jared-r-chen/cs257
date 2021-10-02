@@ -19,6 +19,7 @@ class BooksDataSourceTester(unittest.TestCase):
         self.assertTrue(len(authors) == 1)
         self.assertTrue(authors[0] == Author('Pratchett', 'Terry'))
 
+
 #test one unique author that has an output list of length 1, search by last name
     def test_unique_author2(self):
         authors = self.data_source.authors('Morrison')

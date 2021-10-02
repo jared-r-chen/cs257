@@ -70,14 +70,13 @@ class BooksDataSource:
                     deathDate = None
                     if curAuthor.find('-') + 1 != curAuthor.find(')'):
                         deathDate = int(curAuthor[curAuthor.find('-') + 1:curAuthor.find(')')])
-                    author = Author(lastName, firstName, birthDate, deathDate)
+                    author = Author(lastName.strip(), firstName.strip(), birthDate, deathDate)
                     set_author_list.append(author)
                 book = Book(row[0], int(row[1]), set_author_list)
                 self.init_book_list.append(book)
 
-
-      #if tempString:
-        #tempString = tempString[tempString.find(')') + 6:]
+                if tempString:
+                    tempString = tempString[tempString.find(')') + 6:]
 
         pass
 
@@ -156,9 +155,9 @@ class BooksDataSource:
         books_between_years_list = []
 
         if start_year == None:
-            start_year = 1850
+            start_year = 1500
         if end_year == None:
-            end_year = 2030
+            end_year = 2050
 
         def year_sort_func(e):
             return e.title
