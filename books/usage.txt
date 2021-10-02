@@ -1,6 +1,6 @@
 SYNPOSIS
-  python3 books.py title <search string>
-  python3 books.py author <search string>
+  python3 books.py title "search string"
+  python3 books.py author "search string"
   python3 books.py years <start year> <end year>
   python3 books.py [h | help]
 
