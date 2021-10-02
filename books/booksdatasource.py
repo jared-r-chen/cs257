@@ -97,7 +97,7 @@ class BooksDataSource:
         else:
             for book in self.init_book_list:
                 for current_author in book.authors:
-                    if search_text.lower in current_author.surname.lower + ' ' + current_author.given_name.lower:
+                    if search_text.lower() in current_author.surname.lower() + ' ' + current_author.given_name.lower():
                         if authors_list.count(current_author) == 0:
                             authors_list.append(current_author)
 
@@ -127,7 +127,7 @@ class BooksDataSource:
                 books_list.append(book)
         else:
             for book in self.init_book_list:
-                if search_text.lower in book.title:
+                if search_text.lower() in book.title.lower():
                     books_list.append(book)
 
         def books_sort_func(e):
