@@ -55,28 +55,33 @@ class BooksDataSource:
             book_reader = csv.reader(csvfile, delimiter = ',')
             for row in book_reader:
                 set_author_list = []
-                counter = 0;
-                for i in row[2]:
-                    if i == '(':
-                        counter = counter + 1
-                    tempString = row[2]
-                for x in range(counter):
-                    curAuthor = tempString[0: tempString.find(')') + 1]
-                    fullName = curAuthor[0:curAuthor.find('(')]
-                    wordList = fullName.split()
-                    lastName = wordList[-1]
-                    firstName = fullName[:fullName.find(lastName)]
-                    birthDate = int(curAuthor[curAuthor.find('(') + 1:curAuthor.find('-')])
-                    deathDate = None
-                    if curAuthor.find('-') + 1 != curAuthor.find(')'):
-                        deathDate = int(curAuthor[curAuthor.find('-') + 1:curAuthor.find(')')])
-                    author = Author(lastName.strip(), firstName.strip(), birthDate, deathDate)
+                author_count = 0;
+
+#counts the number of authors, since each author with have a '(' to show birthdate and deathdate, this symbol can be used to count mutiple authors for a single book
+
+                for character in row[2]:
+                    if character == '(':
+                        author_count = author_count + 1
+                    name_and_date = row[2]
+#this for loop takes each author and parses information
+                for author in range(author_count):
+                    current_author = name_and_date[0: name_and_date.find(')') + 1]
+                    full_name = current_author[0:current_author.find('(')]
+                    word_list = full_name.split()
+                    last_name = word_list[-1]
+                    first_name = full_name[:full_name.find(last_name)]
+                    birth_date = int(current_author[current_author.find('(') + 1:current_author.find('-')])
+                    death_date = None
+                    if current_author.find('-') + 1 != current_author.find(')'):
+                        death_date = int(current_author[current_author.find('-') + 1:current_author.find(')')])
+                    author = Author(last_name.strip(), first_name.strip(), birth_date, death_date)
                     set_author_list.append(author)
                 book = Book(row[0], int(row[1]), set_author_list)
                 self.init_book_list.append(book)
 
-                if tempString:
-                    tempString = tempString[tempString.find(')') + 6:]
+#this line skips over the 'and' in cases where there are mutiple authors in name_and_date
+                if name_and_date:
+                    name_and_date = name_and_date[name_and_date.find(')') + 6:]
 
         pass
 
@@ -105,6 +110,7 @@ class BooksDataSource:
 
         authors_list.sort(key = authors_sort_func)
 
+#print statement for readability, remove before submission
         for item in authors_list:
             print(item.given_name, end = ' ')
             print(item.surname)
@@ -142,6 +148,7 @@ class BooksDataSource:
 
         books_list.sort(key = books_sort_func)
 
+#print statement for readability, remove before submission
         for item in books_list:
             print(item.title)
 
@@ -177,6 +184,7 @@ class BooksDataSource:
             year_list.sort(key = year_sort_func)
             books_between_years_list += year_list
 
+#print statement for readability, remove before submission
         for item in books_between_years_list:
             print(item.publication_year, end = ' ')
             print(item.title)
