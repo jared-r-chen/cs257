@@ -14,6 +14,7 @@ parser.add_argument('search', nargs='+')
 args = parser.parse_args()
 books_data_source = BooksDataSource('books1.csv')
 search_list = args.search
+
 if args.title:
     search_term = ''
     num=0
@@ -23,10 +24,13 @@ if args.title:
             if search_list[num] == 'title' or search_list[num] == 'year':
                 sort_term = search_list[num]
             else:
-                search_term += search_list[num] +' '
+                search_term += search_list[num]
+        else:
+            search_term += search_list[num] + ' '
     if search_term == '':
         search_term = None
     books_data_source.books(search_term.strip(), sort_term)
+
 elif args.authors:
     search_term = ''
     for term in search_list:
@@ -34,6 +38,7 @@ elif args.authors:
     if search_term == '':
         search_term = None
     books_data_source.authors(search_term.strip())
+
 elif args.years:
     if len(search_list) > 1:
         print("ERROR! invalid command. type 'help', 'h', or 'usage' for description of commands supported by this CLI.")
@@ -48,5 +53,6 @@ elif args.years:
                 if len(search_term) != search_term.find('-') + 1:
                     end = int(search_term[search_term.find('-') + 1:len(search_term) + 1])
         books_data_source.books_between_years(start, end)
+
 else:
     print("ERROR! invalid command. type 'help', 'h', or 'usage' for description of commands supported by this CLI.")

@@ -131,7 +131,7 @@ class BooksDataSource:
 
         def books_sort_func(e):
             if sort_by == 'year':
-                my_key = e.pulbication_year
+                my_key = e.publication_year
             else:
                 my_key = e.title
             return my_key
