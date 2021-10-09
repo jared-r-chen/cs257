@@ -58,7 +58,7 @@ elif args.authors:
 elif args.years:
     #print error message if there are too many arguments
     if len(search_list) > 1:
-        print("To many arguments. Type 'help', 'h', or 'usage' for description of commands supported by this CLI.")
+        print("To many arguments. Type '--help' or '-h' for description of commands supported by this CLI.")
     else:
         start = None
         end = None
@@ -73,4 +73,4 @@ elif args.years:
         books_data_source.books_between_years(start, end)
 
 else:
-    print("Invalid command. Type 'help', 'h', or 'usage' for description of commands supported by this CLI.")
+    print("Invalid command. Type '--help' or '-h', for description of commands supported by this CLI.")
