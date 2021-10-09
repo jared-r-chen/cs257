@@ -1,24 +1,24 @@
 SYNPOSIS
-  python3 books.py --title "search string"
-  python3 books.py --author "search string"
-  python3 books.py --years <start year> <end year>
-  python3 books.py [h | help]
+  python3 books.py --title <search string>
+  python3 books.py --author <search string>
+  python3 books.py --years <start year>-<end year>
+  python3 books.py [-h | help]
 
 
 Name: 		    title
-Synopsis: 		title String
-Description:	searches database for books with String in title. Lists results alphabetically by title.
+Synopsis: 	    title <String>
+Description:	Search database for books with string in titles. Can be sorted by year or title, determined by the last argument('year' or 'title')
 
 
 
 Name:		      author
-Synopsis:		  author String
+Synopsis:	      author <String>
 Description:	searches database for books written by authors with String in name. Lists results alphabetically by author surname.
 
 
 
 Name: 		    years
-Synopsis:	  	years int1 int2
+Synopsis:	  	years <int1>-<int2>
 Description:	searches database for books published between years int1 and int2 inclusively. Lists results in chronological order.
 
 Name:         -h --help
