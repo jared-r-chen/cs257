@@ -9,11 +9,13 @@ group = parser.add_mutually_exclusive_group()
 group.add_argument('--title', action='store_true', help = "Search database for books with string in titles. Can be sorted by year or title.")
 group.add_argument('--authors', action='store_true', help = "Search database for authors with string in author names.")
 group.add_argument('--years', action='store_true', help = "Search database for books published between years. Enter years in form startYear-endYear.")
-parser.add_argument('search', nargs='+')
+parser.add_argument('search', nargs='*')
 
 args = parser.parse_args()
 books_data_source = BooksDataSource('books1.csv')
 search_list = args.search
+
+
 
 if args.title:
     search_term = ''
@@ -27,9 +29,11 @@ if args.title:
                 search_term += search_list[num]
         else:
             search_term += search_list[num] + ' '
+    if len(search_list) > 1:
+        search_term = search_term.strip()
     if search_term == '':
         search_term = None
-    books_data_source.books(search_term.strip(), sort_term)
+    books_data_source.books(search_term, sort_term)
 
 elif args.authors:
     search_term = ''
@@ -37,7 +41,9 @@ elif args.authors:
         search_term += term +' '
     if search_term == '':
         search_term = None
-    books_data_source.authors(search_term.strip())
+    else:
+        search_term = search_term.strip()
+    books_data_source.authors(search_term)
 
 elif args.years:
     if len(search_list) > 1:
