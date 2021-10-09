@@ -105,6 +105,10 @@ class BooksDataSource:
 
         authors_list.sort(key = authors_sort_func)
 
+        for item in authors_list:
+            print(item.given_name, end = ' ')
+            print(item.surname)
+
         return authors_list
 
     def books(self, search_text=None, sort_by='title'):
@@ -138,6 +142,9 @@ class BooksDataSource:
 
         books_list.sort(key = books_sort_func)
 
+        for item in books_list:
+            print(item.title)
+
         return books_list
 
     def books_between_years(self, start_year=None, end_year=None):
@@ -169,5 +176,9 @@ class BooksDataSource:
                     year_list.append(book)
             year_list.sort(key = year_sort_func)
             books_between_years_list += year_list
+
+        for item in books_between_years_list:
+            print(item.publication_year, end = ' ')
+            print(item.title)
 
         return books_between_years_list
