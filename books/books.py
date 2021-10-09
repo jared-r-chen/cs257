@@ -47,7 +47,7 @@ elif args.authors:
 
 elif args.years:
     if len(search_list) > 1:
-        print("ERROR! invalid command. type 'help', 'h', or 'usage' for description of commands supported by this CLI.")
+        print("To many arguments. Type 'help', 'h', or 'usage' for description of commands supported by this CLI.")
     else:
         start = None
         end = None
@@ -61,4 +61,4 @@ elif args.years:
         books_data_source.books_between_years(start, end)
 
 else:
-    print("ERROR! invalid command. type 'help', 'h', or 'usage' for description of commands supported by this CLI.")
+    print("Invalid command. Type 'help', 'h', or 'usage' for description of commands supported by this CLI.")
