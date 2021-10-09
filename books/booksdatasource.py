@@ -57,12 +57,12 @@ class BooksDataSource:
                 set_author_list = []
                 author_count = 0;
 
-#counts the number of authors, since each author with have a '(' to show birthdate and deathdate, this symbol can be used to count mutiple authors for a single book
-
+#counts the number of authors using '(' as an idicator
                 for character in row[2]:
                     if character == '(':
                         author_count = author_count + 1
                     name_and_date = row[2]
+
 #this for loop takes each author and parses information
                 for author in range(author_count):
                     current_author = name_and_date[0: name_and_date.find(')') + 1]
@@ -93,17 +93,12 @@ class BooksDataSource:
         '''
         authors_list = []
 
-        if search_text == None:
-            for book in self.init_book_list:
-                for current_author in book.authors:
+#iterates through book_list to find all matching authors
+        for book in self.init_book_list:
+            for current_author in book.authors:
+                if search_text == None or search_text.lower() in current_author.surname.lower() + ' ' + current_author.given_name.lower():
                     if authors_list.count(current_author) == 0:
                         authors_list.append(current_author)
-        else:
-            for book in self.init_book_list:
-                for current_author in book.authors:
-                    if search_text.lower() in current_author.surname.lower() + ' ' + current_author.given_name.lower():
-                        if authors_list.count(current_author) == 0:
-                            authors_list.append(current_author)
 
         def authors_sort_func(e):
             return e.surname + ' ' + e.given_name
@@ -131,14 +126,12 @@ class BooksDataSource:
         '''
         books_list = []
 
-        if search_text == None:
-            for book in self.init_book_list:
+#iterates through book_list to find all matching books
+        for book in self.init_book_list:
+            if search_text == None or search_text.lower() in book.title.lower():
                 books_list.append(book)
-        else:
-            for book in self.init_book_list:
-                if search_text.lower() in book.title.lower():
-                    books_list.append(book)
 
+#defines sort by either year or title
         def books_sort_func(e):
             if sort_by == 'year':
                 my_key = e.publication_year
@@ -176,11 +169,14 @@ class BooksDataSource:
         def year_sort_func(e):
             return e.title
 
+#iterates through years to find all matching publication dates
         for year in range(start_year, end_year+1):
             year_list = []
             for book in self.init_book_list:
                 if book.publication_year == year:
                     year_list.append(book)
+
+#sort all books with the same publication date by title before appending to list
             year_list.sort(key = year_sort_func)
             books_between_years_list += year_list
 
