@@ -104,13 +104,14 @@ class BooksDataSourceTester(unittest.TestCase):
 
     def test_year_noStart(self):
         books_between_years = self.data_source.books_between_years(None, 1814)
-        self.assertTrue(len(books_between_years) == 2)
+        self.assertTrue(len(books_between_years) == 3)
 
     def test_year_noStart2(self):
         books_between_years = self.data_source.books_between_years(None, 1814)
-        self.assertTrue(len(books_between_years) == 2)
-        self.assertTrue(books_between_years[0] == Book('Pride and Prejudice'))
-        self.assertTrue(books_between_years[1] == Book('Sense and Sensibility'))
+        self.assertTrue(len(books_between_years) == 3)
+        self.assertTrue(books_between_years[0] == Book('The Life and Opinions of Tristram Shandy, Gentleman'))
+        self.assertTrue(books_between_years[1] == Book('Pride and Prejudice'))
+        self.assertTrue(books_between_years[2] == Book('Sense and Sensibility'))
 
     def test_year_noEnd(self):
         books_between_years = self.data_source.books_between_years(2020, None)
