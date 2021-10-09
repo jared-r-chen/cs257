@@ -6,9 +6,9 @@ from booksdatasource import Author, Book, BooksDataSource
 parser = argparse.ArgumentParser()
 
 group = parser.add_mutually_exclusive_group()
-group.add_argument('--title', action='store_true', help = "Search database for books with string in titles. Can be sorted by year or title.")
-group.add_argument('--authors', action='store_true', help = "Search database for authors with string in author names.")
-group.add_argument('--years', action='store_true', help = "Search database for books published between years. Enter years in form startYear-endYear.")
+group.add_argument('--title', action='store_true', help = 'Search database for books with string in titles. Can be sorted by year or title, determined by the last argument(\'year\' or \'title\')')
+group.add_argument('--authors', action='store_true', help = 'Search database for authors with string in author names.')
+group.add_argument('--years', action='store_true', help = 'Search database for books published between years. Enter years in form startYear-endYear.')
 parser.add_argument('search', nargs='*')
 
 args = parser.parse_args()
