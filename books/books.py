@@ -1,5 +1,3 @@
-import sys
-import csv
 import argparse
 from booksdatasource import Author, Book, BooksDataSource
 
@@ -15,8 +13,6 @@ args = parser.parse_args()
 books_data_source = BooksDataSource('books1.csv')
 search_list = args.search
 
-
-
 if args.title:
     search_term = ''
     num=0
@@ -29,10 +25,10 @@ if args.title:
                 search_term += search_list[num]
         else:
             search_term += search_list[num] + ' '
-    if len(search_list) > 1:
-        search_term = search_term.strip()
     if search_term == '':
         search_term = None
+    else:
+        search_term = search_term.strip()
     books_data_source.books(search_term, sort_term)
 
 elif args.authors:
