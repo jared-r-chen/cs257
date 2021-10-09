@@ -2,6 +2,7 @@
 '''
     booksdatasource.py
     Jeff Ondich, 21 September 2021
+    Aaron Schondorf and Jared Chen, 9 October 2021
 
     For use in the "books" assignment at the beginning of Carleton's
     CS 257 Software Design class, Fall 2021.
