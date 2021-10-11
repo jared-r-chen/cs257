@@ -107,9 +107,9 @@ class BooksDataSource:
         authors_list.sort(key = authors_sort_func)
 
 #print statement for readability, remove before submission
-        for item in authors_list:
-            print(item.given_name, end = ' ')
-            print(item.surname)
+        # for item in authors_list:
+        #     print(item.given_name, end = ' ')
+        #     print(item.surname)
 
         return authors_list
 
@@ -143,8 +143,8 @@ class BooksDataSource:
         books_list.sort(key = books_sort_func)
 
 #print statement for readability, remove before submission
-        for item in books_list:
-            print(item.title)
+#        for item in books_list:
+#            print(item.title)
 
         return books_list
 
@@ -182,8 +182,8 @@ class BooksDataSource:
             books_between_years_list += year_list
 
 #print statement for readability, remove before submission
-        for item in books_between_years_list:
-            print(item.publication_year, end = ' ')
-            print(item.title)
+        # for item in books_between_years_list:
+        #     print(item.publication_year, end = ' ')
+        #     print(item.title)
 
         return books_between_years_list

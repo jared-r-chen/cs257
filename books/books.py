@@ -13,9 +13,9 @@ parser = argparse.ArgumentParser()
 
 #mutually exclusive group handles usage of different functions
 group = parser.add_mutually_exclusive_group()
-group.add_argument('--title', action='store_true', help = 'Search database for books with string in titles. Can be sorted by year or title, determined by the last argument(\'year\' or \'title\')')
-group.add_argument('--authors', action='store_true', help = 'Search database for authors with string in author names.')
-group.add_argument('--years', action='store_true', help = 'Search database for books published between years. Enter years in form startYear-endYear.')
+group.add_argument('--title', action='store_true', help = 'Search database for books with string in titles. Can be sorted by year or title, determined by the last argument(\'year\' or \'title\'), defaults to title. Example: --title the t year')
+group.add_argument('--authors', action='store_true', help = 'Search database for authors with string in author names. Example: --authors bront')
+group.add_argument('--years', action='store_true', help = 'Search database for books published between years. Enter years in form startYear-endYear. Example: --years 1990-2001')
 #search term that all functions use
 parser.add_argument('search', nargs='*')
 
@@ -30,10 +30,12 @@ if args.title:
     sort_term = None
     #appends all elements of search_list into search_term
     for num in range(len(search_list)):
+
         #if final element of search_list is year or title, it will not be added to search_term and be used as sort_term
-        if num == len(search_list):
+        if num == len(search_list) - 1:
             if search_list[num] == 'title' or search_list[num] == 'year':
                 sort_term = search_list[num]
+
             else:
                 search_term += search_list[num]
         else:
@@ -42,7 +44,11 @@ if args.title:
         search_term = None
     else:
         search_term = search_term.strip()
-    books_data_source.books(search_term, sort_term)
+    books_list = books_data_source.books(search_term, sort_term)
+#print results
+    for item in books_list:
+        print(item.title)
+
 
 elif args.authors:
     search_term = ''
@@ -53,7 +59,11 @@ elif args.authors:
         search_term = None
     else:
         search_term = search_term.strip()
-    books_data_source.authors(search_term)
+    authors_list = books_data_source.authors(search_term)
+# prints out authors results
+    for item in authors_list:
+        print(item.given_name, end = ' ')
+        print(item.surname)
 
 elif args.years:
     #print error message if there are too many arguments
@@ -70,7 +80,11 @@ elif args.years:
                     start = int(search_term[0:search_term.find('-')])
                 if len(search_term) != search_term.find('-') + 1:
                     end = int(search_term[search_term.find('-') + 1:len(search_term) + 1])
-        books_data_source.books_between_years(start, end)
+        books_between_years_list = books_data_source.books_between_years(start, end)
+#print out books_between_years results
+        for item in books_between_years_list:
+            print(item.publication_year, end = ' ')
+            print(item.title)
 
 else:
     print("Invalid command. Type '--help' or '-h', for description of commands supported by this CLI.")
