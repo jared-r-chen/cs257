@@ -28,6 +28,7 @@ def create_NOC():
 
     # writing to csv file
     with open(filename, 'w') as csvfile:
+        NOC_data.pop(0)
         csvwriter = csv.writer(csvfile)
         csvwriter.writerows(NOC_data)
 
@@ -45,6 +46,7 @@ def create_athletes():
 
     # writing to csv file
     with open(filename, 'w') as csvfile:
+        athlete_data.pop(0)
         csvwriter = csv.writer(csvfile)
         csvwriter.writerows(athlete_data)
 
@@ -62,6 +64,7 @@ def create_events():
 
     # writing to csv file
     with open(filename, 'w') as csvfile:
+        event_data.pop(0)
         csvwriter = csv.writer(csvfile)
         csvwriter.writerows(event_data)
 
