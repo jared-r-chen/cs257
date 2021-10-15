@@ -11,7 +11,7 @@ CREATE TABLE athletes (
 );
 
 CREATE TABLE events (
-    id integer,
+    id SERIAL,
     year integer,
     sport text,
     event text,
