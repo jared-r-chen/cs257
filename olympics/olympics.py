@@ -24,7 +24,7 @@ group.add_argument('--golds', action='store_true', help = 'List all the NOCs and
 group.add_argument('--athletes', action='store_true', help = 'List the names of all the athletes from a specifc NOC (NOC abreviation should be listed after --athletes command)')
 group.add_argument('--name', action='store_true', help = 'List the names of all the athletes with the search term in their name (search term should be listed after --name command)')
 #search term
-parser.add_argument('search', nargs= 1 )
+parser.add_argument('search', nargs= '*' )
 
 args = parser.parse_args()
 
@@ -52,7 +52,9 @@ if args.golds:
 
 elif args.athletes:
     search_string = args.search[0]
+    print(search_string)
     search_string = search_string.upper()
+
     query = '''SELECT DISTINCT * FROM athletes
             WHERE NOC = %s'''
     try:
