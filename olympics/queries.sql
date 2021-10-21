@@ -2,9 +2,11 @@
 SELECT * FROM NOC
 ORDER BY Country ASC;
 
+
 -- Lists all atheletes from Kenya
 SELECT * FROM athletes
 WHERE NOC = 'KEN';
+
 
 -- lists all medals won by Greg Louganis (71665)
 SELECT DISTINCT athletes.name, events.event, events.year, events.medal
@@ -15,6 +17,7 @@ SELECT DISTINCT athletes.name, events.event, events.year, events.medal
 -- filter condition is id = 71665 and medals are won
 WHERE (medal != 'NA' AND athletes.id = 71665)
 ORDER BY year;
+
 
 -- List all NOC by decending gold medal count
 SELECT NOC.country, COUNT(events.medal)
