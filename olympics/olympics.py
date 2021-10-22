@@ -20,7 +20,7 @@ except Exception as e:
 parser = argparse.ArgumentParser()
 
 group = parser.add_mutually_exclusive_group()
-group.add_argument('--golds', action='store_true', help = 'List all the NOCs and the number of gold medals they have won, in decreasing order of the number of gold medals.')
+group.add_argument('--golds', action='store_true', help = 'List all the NOCs and the number of gold medals they have won, in decreasing order of the number of gold medals handed out.')
 group.add_argument('--athletes', action='store_true', help = 'List the names of all the athletes from a specifc NOC (NOC abreviation should be listed after --athletes command)')
 group.add_argument('--name', action='store_true', help = 'List the names of all the athletes with the search term in their name (search term should be listed after --name command)')
 #search term
