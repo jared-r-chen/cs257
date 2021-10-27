@@ -41,7 +41,7 @@ def create_athletes():
     with open('/Users/jared.chen/Downloads/olympic_archive/athlete_events.csv', newline ='') as csvfile:
             scanner = csv.reader(csvfile, delimiter = ',')
             for row in scanner:
-                current_row = [row[0], row[1], row[7]]
+                current_row = [row[0], row[1], row[7], row[2]]
                 athlete_data.append(current_row)
 
     # writing to csv file
@@ -58,9 +58,11 @@ def create_events():
 
     with open('/Users/jared.chen/Downloads/olympic_archive/athlete_events.csv', newline ='') as csvfile:
             scanner = csv.reader(csvfile, delimiter = ',')
+            curr_id = 0
             for row in scanner:
-                current_row = [row[0], row[9], row[12], row[13], row[14]]
+                current_row = [curr_id, row[0], row[9], row[12], row[13], row[14]]
                 event_data.append(current_row)
+                curr_id = curr_id + 1;
 
     # writing to csv file
     with open(filename, 'w') as csvfile:

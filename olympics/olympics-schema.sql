@@ -7,10 +7,12 @@ CREATE TABLE NOC (
 CREATE TABLE athletes (
     id SERIAL,
     name text,
-    NOC text
+    NOC text,
+    gender text
 );
 
 CREATE TABLE events (
+    event_id integer,
     id SERIAL,
     year integer,
     sport text,
