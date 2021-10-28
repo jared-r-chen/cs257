@@ -18,5 +18,6 @@ CREATE TABLE events (
     sport text,
     event text,
     city text,
+    season text,
     medal text
 );
