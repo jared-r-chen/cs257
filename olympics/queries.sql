@@ -33,6 +33,6 @@ SELECT DISTINCT * FROM athletes
 WHERE LOWER(name) LIKE LOWER('%matt%');
 
 --Lists all games by year decending
-SELECT DISTINCT events.event_id, events.year, events.season, events.city
-  FROM events
+SELECT DISTINCT unique_events.id, unique_events.year, unique_events.season, unique_events.city
+  FROM unique_events
 ORDER BY year;

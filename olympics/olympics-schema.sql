@@ -22,7 +22,7 @@ CREATE TABLE events (
 );
 
 CREATE TABLE unique_events (
-    id integer,
+    id SERIAL,
     year integer,
     city text,
     season text
