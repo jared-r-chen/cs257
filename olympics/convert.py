@@ -60,7 +60,7 @@ def create_events():
             scanner = csv.reader(csvfile, delimiter = ',')
             curr_id = 0
             for row in scanner:
-                current_row = [curr_id, row[0], row[9], row[12], row[13], row[14]]
+                current_row = [curr_id, row[0], row[9], row[12], row[13], row[11], row[14]]
                 event_data.append(current_row)
                 curr_id = curr_id + 1;
 

@@ -17,5 +17,6 @@ CREATE TABLE events (
     year integer,
     sport text,
     event text,
+    city text,
     medal text
 );
