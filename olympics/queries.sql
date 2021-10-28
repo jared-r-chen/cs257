@@ -36,3 +36,30 @@ WHERE LOWER(name) LIKE LOWER('%matt%');
 SELECT DISTINCT unique_events.id, unique_events.year, unique_events.season, unique_events.city
   FROM unique_events
 ORDER BY year;
+
+--Lists all NOC with full country name
+SELECT DISTINCT * FROM NOC
+
+--Get athletes from an specific olympic game who have won a medal
+SELECT DISTINCT athletes.id, athletes.name, athletes.gender, events.sport, events.event, events.medal
+  FROM events
+  JOIN unique_events
+  ON events.year = unique_events.year
+  AND events.city = unique_events.city
+  AND events.season = unique_events.season
+  JOIN athletes
+  ON events.id = athletes.id
+WHERE (medal != 'NA') AND (unique_events.id = 14)
+ORDER BY athletes.name;
+
+--Get athletes from an specific olympic game who have won a medal and are from a specified NOC
+SELECT DISTINCT athletes.id, athletes.name, athletes.gender, events.sport, events.event, events.medal
+  FROM events
+  JOIN unique_events
+  ON events.year = unique_events.year
+  AND events.city = unique_events.city
+  AND events.season = unique_events.season
+  JOIN athletes
+  ON events.id = athletes.id
+WHERE (medal != 'NA') AND (unique_events.id = 14) AND (athletes.NOC = 'CAN')
+ORDER BY athletes.name;
