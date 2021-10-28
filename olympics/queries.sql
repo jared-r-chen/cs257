@@ -31,3 +31,8 @@ ORDER BY COUNT(events.medal) DESC;
 --searches athlete names for search string(operation of my choosing)
 SELECT DISTINCT * FROM athletes
 WHERE LOWER(name) LIKE LOWER('%matt%');
+
+--Lists all games by year decending
+SELECT DISTINCT events.event_id, events.year, events.season, events.city
+  FROM events
+ORDER BY year;

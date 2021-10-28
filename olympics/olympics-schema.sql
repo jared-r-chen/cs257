@@ -12,7 +12,6 @@ CREATE TABLE athletes (
 );
 
 CREATE TABLE events (
-    event_id integer,
     id SERIAL,
     year integer,
     sport text,
@@ -20,4 +19,11 @@ CREATE TABLE events (
     city text,
     season text,
     medal text
+);
+
+CREATE TABLE unique_events (
+    id integer,
+    year integer,
+    city text,
+    season text
 );

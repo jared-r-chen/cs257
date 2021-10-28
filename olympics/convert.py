@@ -58,11 +58,40 @@ def create_events():
 
     with open('/Users/jared.chen/Downloads/olympic_archive/athlete_events.csv', newline ='') as csvfile:
             scanner = csv.reader(csvfile, delimiter = ',')
-            curr_id = 0
+
+
             for row in scanner:
-                current_row = [curr_id, row[0], row[9], row[12], row[13], row[11], row[10], row[14]]
+                current_row = [row[0], row[9], row[12], row[13], row[11], row[10], row[14]]
                 event_data.append(current_row)
-                curr_id = curr_id + 1;
+
+
+    # writing to csv file
+    with open(filename, 'w') as csvfile:
+        event_data.pop(0)
+        csvwriter = csv.writer(csvfile)
+        csvwriter.writerows(event_data)
+
+def create_unique_events():
+    print('in create_unique_events')
+    filename = "unique_events.csv"
+    event_data = []
+
+    with open('/Users/jared.chen/Downloads/olympic_archive/athlete_events.csv', newline ='') as csvfile:
+            scanner = csv.reader(csvfile, delimiter = ',')
+            unique_events = []
+
+            for row in scanner:
+                event_string = row[9] + row[11] + row[10]
+
+                if event_string not in unique_events:
+                    unique_events.append(event_string)
+                    current_row = [row[9], row[11], row[10]]
+                    event_data.append(current_row)
+
+            counter = 0
+            for item in event_data:
+                item.insert(0, counter)
+                counter = counter + 1
 
     # writing to csv file
     with open(filename, 'w') as csvfile:
@@ -74,6 +103,7 @@ def main():
     create_NOC()
     create_athletes()
     create_events()
+    create_unique_events()
 
 if __name__ == "__main__":
     main()
