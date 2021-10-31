@@ -3,3 +3,27 @@ Jared Chen & Aaron Schondorf
 Database link: https://www.kaggle.com/sashankpillai/spotify-top-200-charts-20202021
 
 We will be using a Spotify dataset that contains information for the top 200 lists during the 2020-2021 cycle. here are many databases that pull information from Spotify. What makes this database more usable is it provides a lot of quantifiable data like listens, artist followers, and highest ranking in addition to other interesting but less useful attributes like liveliness.
+
+STORY:
+An avid Spotify user wants to know what the most popular rock songs released in 2020.
+
+IMPLEMENTATION:
+We could have a simple drop down menu in the search bar (the one that auto populates when you type) that gives a list of genres that the user can select from and a calendar that they can select start and end dates from. Then clicking search would give the user a list of songs with other useful information (such as artist and number of streams).
+
+STORY:
+A Taylor Swift fan wants to see the most popular Taylor Swift songs.
+
+IMPLEMENTATION
+We can use a simple search bar into which the user can type the name of an artist. Clicking search would give a list of that artist's songs and other useful information.
+
+STORY:
+A song writer wants to find a place to start to make a hit country song.
+
+IMPLEMENTATION:
+In this case, the user could simply pick country from the aforementioned drop down menu and hit search. They could then use another drop down menu to sort by popularity and another drop down menu to add to the results the columns of dancability, energy, loudness, tempo, and duration.
+
+STORY:
+An Olivia Rodrigo fan wants to find a song similar to "good 4 u".
+
+IMPLEMENTATION:
+The user would go to the "Find songs like" page and type the name of the song into the search bar (again, autopopulating so that you don't misspell something). Clicking search would give the user the 100 most similar songs to the chosen song (as ranked by an algorithm that looks at things like tempo and acousticness).
