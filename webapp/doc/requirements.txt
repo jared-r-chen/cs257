@@ -1,1 +1,5 @@
+Jared Chen & Aaron Schondorf
 
+Database link: https://www.kaggle.com/sashankpillai/spotify-top-200-charts-20202021
+
+We will be using a Spotify dataset that contains information for the top 200 lists during the 2020-2021 cycle. here are many databases that pull information from Spotify. What makes this database more usable is it provides a lot of quantifiable data like listens, artist followers, and highest ranking in addition to other interesting but less useful attributes like liveliness.
