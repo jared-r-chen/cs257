@@ -42,11 +42,13 @@
 
  .sort{
    margin-top: 16px;
+   margin-left: 80px;
    grid-area: sort;
  }
 
  .add-column{
    position: absolute;
+   margin-right: 80px;
    right: 1%;
    top: 67px;
  }
@@ -56,6 +58,9 @@
    display: grid;
    grid-template-columns: 25% 25% 25% 25%;
    grid-template-rows: 35px 35px 35px 35px;
+   margin-left: 50px;
+   margin-right: 50px;
+   margin-bottom: 50px;
    /* border-color: black;
    border-style: solid;
    border-width: 2px; */

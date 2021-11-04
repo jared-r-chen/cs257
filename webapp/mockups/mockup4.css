@@ -1,23 +1,24 @@
 /*
   Jared Chen & Aaron Schondorf
-   mockup2.css
-   3 Nov 2021
+   mockup4.css
+   4 Nov 2021
    */
 
- body{
-   margin: 0px;
- }
+body{
+  margin: 0px;
+
+}
 
 .grid{
    display: grid;
-   grid-template-rows: 50px 50px auto;
-
+   grid-template-columns: 50% 50%;
+   grid-template-rows: auto auto;
    /* border-color: black;
    border-style: solid;
    border-width: 5px; */
    grid-template-areas:
-            "menu"
-            "search-area";
+            "menu menu"
+            "left right";
  }
 
  .menu{
@@ -38,13 +39,8 @@
    cursor: pointer;
    background-color: #D3D3D3;
  }
-
- .search-area{
-   margin-left: 2.5%;
-   margin-top: 16px;
-   grid-area: search-area;
- }
-
- .search{
-   width: 50%;
- }
+p{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-bottom: 50px;
+}
