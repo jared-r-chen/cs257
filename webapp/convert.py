@@ -25,14 +25,22 @@ def create_songs():
                 streams = row[5]
                 streams = streams.replace(',', '')
 
-                followers = row[7]
-                if followers == '':
-                    print('error dectected')
-                    followers = '-1'
+                followers = row[7].strip(' ')
+                spotify_id = row[8].strip(' ')
+                release_date = row[10].strip(' ')
+                popularity = row[12].strip(' ')
+                if not followers:
+                    # print('index number:', row[0], 'followers:', len(row[7]))
+
+                    #print('error detected')
+                    followers = 0
+                    spotify_id = 'NA'
+                    release_date = 'NA'
+                    popularity = 0
 
 
 
-                current_row = [row[0], row[1], row[2], row[3], row[4], streams, row[6], followers, row[8], row[10], row[12]]
+                current_row = [row[0], row[1], row[2], row[3], row[4], streams, row[6], followers, spotify_id, release_date, popularity]
                 song_data.append(current_row)
 
     # writing to csv file
@@ -50,7 +58,9 @@ def create_genres():
             scanner = csv.reader(csvfile, delimiter = ',')
             for row in scanner:
                 genre_list = []
-                current_genre = row[9];
+                current_genre = row[9].strip(' ');
+                if not current_genre:
+                    current_genre = '[NA]'
                 current_genre = current_genre[1:-1]
                 genre_list = current_genre.split(',')
                 for genre in genre_list:
@@ -72,7 +82,29 @@ def create_attributes():
     with open('/Users/jared.chen/Downloads/spotify_dataset.csv', newline ='') as csvfile:
             scanner = csv.reader(csvfile, delimiter = ',')
             for row in scanner:
-                current_row = [row[0], row[13], row[14], row[15], row[16], row[17], row[18], row[19], row[20], row[21], row[22]]
+                dancaeability = row[13].strip(' ')
+                energy = row[14].strip(' ')
+                loudness = row[15].strip(' ')
+                speechiness = row[16].strip(' ')
+                acousticness = row[17].strip(' ')
+                liveness = row[18].strip(' ')
+                tempo = row[19].strip(' ')
+                duration = row[20].strip(' ')
+                valence = row[21].strip(' ')
+                chord = row[22].strip(' ')
+                if not dancaeability:
+                    dancaeability = 0;
+                    energy = 0
+                    loudness = 0
+                    speechiness = 0
+                    acousticness = 0
+                    liveness = 0
+                    tempo = 0
+                    duration = 0
+                    valence = 0
+                    chord = 'NA'
+
+                current_row = [row[0], dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence, chord]
                 attribute_data.append(current_row)
 
     # writing to csv file
