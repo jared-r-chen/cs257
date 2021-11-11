@@ -19,20 +19,21 @@ def get_connection():
                             user=config.user,
                             password=config.password)
 
-@api.route('/results<song>')
-def get_results():
+@api.route('/results<song_search>')
+def get_results(song_search):
     ''' Function definition
     '''
-    query = '''SELECT * FROM songs,genre, attributes WHERE song = %s'''
+    query = '''SELECT * FROM songs,genre,attributes WHERE song = %s'''
 
     song_list = []
 
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        cursor.execute(query)
+        cursor.execute(query, (song_search))
         for row in cursor:
-            song_list.append(row)
+            song = {'id':row[0],'highest_pos':row[1],'times_charted':row[2],'top_dates':row[3],'name':row[4],'streams':row[5],'artist':row[6],'followers':row[7],'spotify_id':row[8],'release_date':row[9],'popularity':row[10]}
+            song_list.append(song)
         cursor.close()
         connection.close()
     except Exception as e:
