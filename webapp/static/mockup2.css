@@ -1,0 +1,74 @@
+/*
+  Jared Chen & Aaron Schondorf
+   mockup2.css
+   3 Nov 2021
+   */
+
+ body{
+   margin: 0px;
+ }
+
+.grid{
+   display: grid;
+   grid-template-rows: 50px 50px auto;
+
+   /* border-color: black;
+   border-style: solid;
+   border-width: 5px; */
+   grid-template-areas:
+            "menu"
+            "sort"
+            "result";
+ }
+
+ .menu{
+   text-align: center;
+   grid-area: menu;
+   height: 50px;
+   background-color: grey;
+ }
+
+ .menu-button{
+   height: 50px;
+   border-width: 0;
+   background-color: grey;
+
+ }
+
+ .menu-button:hover{
+   cursor: pointer;
+   background-color: #D3D3D3;
+ }
+
+ .sort{
+   margin-top: 16px;
+   margin-left: 80px;
+   grid-area: sort;
+ }
+
+ .add-column{
+   position: absolute;
+   margin-right: 80px;
+   right: 1%;
+   top: 67px;
+ }
+
+ .result{
+   grid-area: result;
+   display: grid;
+   grid-template-columns: 25% 25% 25% 25%;
+   grid-template-rows: 35px 35px 35px 35px;
+   margin-left: 50px;
+   margin-right: 50px;
+   margin-bottom: 50px;
+   /* border-color: black;
+   border-style: solid;
+   border-width: 2px; */
+ }
+
+ .result-cell{
+   text-align: center;
+   border-color: black;
+   border-style: solid;
+   border-width: 2px;
+ }
