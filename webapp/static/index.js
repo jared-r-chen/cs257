@@ -18,7 +18,7 @@
    // event.preventDefault();
    // let url = getAPIBaseURL() + '/results/';
    let search_string = document.getElementById('search_item').value;
-   // console.log(search_string);
+   //console.log(search_string);
    let url = getAPIBaseURL() + '/results/' + search_string;
 
    document.getElementById('content').innerHTML = '';
@@ -29,7 +29,7 @@
    .then((response) => response.json())
 
    .then(function(songs) {
-     console.log(songs);
+    //console.log(songs);
 
      let tableBody = '';
      for (let i = 0; i < songs.length; i++) {
