@@ -40,7 +40,7 @@ def get_results(song_search):
         cursor = connection.cursor()
         cursor.execute(query, (song_search))
         for row in cursor:
-            song = {'id':row[0],'name':row[1],'artist':row[2],'highest position':row[3],'streams':row[4]}
+            song = {'id':row[0],'name':row[1],'artist':row[2],'highest_pos':row[3],'streams':row[4]}
             song_list.append(song)
         cursor.close()
         connection.close()
