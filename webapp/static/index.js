@@ -1,6 +1,6 @@
 /*
  * index.js
- * Jared Chen, 1 November 2021
+ * Jared Chen & Aaron Scondorf, 1 November 2021
  */
 
  // Returns the base URL of the API, onto which endpoint
