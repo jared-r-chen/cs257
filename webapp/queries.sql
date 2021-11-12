@@ -1,5 +1,5 @@
 --Lists attributes of a given song name. replace Beg with desires search term
-SELECT name, artist, highest_pos, streams
+SELECT id, name, artist, highest_pos, streams
   FROM songs
-  WHERE name LIKE '%Beg%'
+  WHERE UPPER(name) LIKE UPPER('%beg%')
   ORDER BY name;

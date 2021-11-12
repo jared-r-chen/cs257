@@ -6,24 +6,32 @@
 
 body{
   margin: 0px;
-
 }
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+
 
 .grid{
    display: grid;
-   grid-template-columns: 50% 50%;
    grid-template-rows: auto auto;
-   /* border-color: black;
-   border-style: solid;
-   border-width: 5px; */
-   grid-template-areas:
-            "menu menu"
-            "left right";
+ }
+
+ .content{
+   display: grid;
+   grid-template-columns: 50% 50%;
+   grid-template-rows: auto;
  }
 
  .menu{
    text-align: center;
-   grid-area: menu;
    height: 50px;
    background-color: grey;
  }
@@ -43,14 +51,12 @@ body{
 .left-container{
   margin-left: 5%;
   margin-top: 16px;
-  grid-area: left;
 }
 
 .right-container{
   margin-right: 5%;
   margin-top: 16px;
   border-color: black;
-  grid-area: right;
 }
 
 .calender{
@@ -59,4 +65,17 @@ body{
 
 .search{
   width: 75%;
+}
+
+.sort{
+  display: none;
+  margin-top: 16px;
+  margin-left: 1%;
+}
+
+.add-column{
+  position: absolute;
+  margin-right: 1%;
+  right: 1%;
+  top: 67px;
 }

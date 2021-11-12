@@ -4,7 +4,7 @@
         <!-- <meta charset="UTF-8"> -->
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <link rel="stylesheet" type="text/css" href="../static/mockup1.css" />
-        <!-- <script type="text/javascript" src="{{ url_for('static', filename='books.js') }}" ></script> -->
+        <script type="text/javascript" src="../static/index.js" ></script>
         <title>New Search</title>
 
 
@@ -15,32 +15,56 @@
          <div class = "menu">
            <form>
              <!-- <button class = "menu-button" formaction="./index.html">Index</button> -->
-             <button class = "menu-button" formaction="./index.html">New Search</button>
-             <button class = "menu-button" formaction="./mockup3.html">Find Songs Like</button>
-             <button class = "menu-button" formaction="./mockup4.html">Help</button>
+             <button class = "menu-button" onclick="location.reload();">New Search</button>
+             <button class = "menu-button" formaction="./songs-like">Find Songs Like</button>
+             <button class = "menu-button" formaction="./help">Help</button>
            </form>
 
 
          </div>
-         <div class = "left-container">
-           <form action="./mockup2.html">
-             <label>Song Search Bar</label> </br>
-             <input type="text" class = "search" placeholder="Song name"/> </br></br>
+         <div class = "content" id = "content">
+           <div class = "left-container">
 
-             <label>Artist Search Bar</label> </br>
-             <input type="text" class = "search" placeholder="Artist name"/> </br></br>
+            <label>Song Search Bar</label> </br>
+            <input type="text" class = "search" id = "search_item" placeholder="Song name"/> </br></br>
 
-             <label>Genre Search Bar</label> </br>
-             <input type="text" class = "search" placeholder="Genre search"/> </br></br>
+            <label>Artist Search Bar</label> </br>
+            <input type="text" class = "search" placeholder="Artist name"/> </br></br>
 
-             <input type="submit" value="Search"/>
+            <label>Genre Search Bar</label> </br>
+            <input type="text" class = "search" placeholder="Genre search"/> </br></br>
 
-           </form>
+            <button onclick="search_song();">Search</button>
+
+
+           </div>
+
+           <div class = "right-container">
+             <img class = "calender" src="https://www.wiki-calendar.com/wp-content/uploads/2021/01/November-2021-Calendar-Printable-with-Holidays.jpg"/>
+
+           </div>
          </div>
-         <div class = "right-container">
-           <img class = "calender" src="https://www.wiki-calendar.com/wp-content/uploads/2021/01/November-2021-Calendar-Printable-with-Holidays.jpg"/>
 
+         <div>
+           <div class = "sort" id = "sort-block">
+             <form>
+               <label>Sort by: </label>
+               <input type="text" placeholder="Search"/>
+
+               <input type="checkbox" value="Acsending">
+               <label>Acsending </label>
+
+               <div class = "add-column">
+                 <label>Add Column: </label>
+                 <input type="text" placeholder="Column Name"/>
+               </div>
+
+             </form>
+           </div>
+           <p><table id="songs_table"></table></p>
          </div>
+
+
         </div>
 
 

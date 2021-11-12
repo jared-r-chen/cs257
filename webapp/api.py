@@ -19,11 +19,19 @@ def get_connection():
                             user=config.user,
                             password=config.password)
 
-@api.route('/results<song_search>')
+
+@api.route('/results/<song_search>')
 def get_results(song_search):
-    ''' Function definition
-    '''
-    query = '''SELECT * FROM songs,genre,attributes WHERE song = %s'''
+
+    modified_search = "'%%" + song_search + "%%'"
+    print(modified_search)
+
+    query = '''SELECT id, name, artist, highest_pos, streams
+      FROM songs
+      WHERE UPPER(name) LIKE UPPER(''' + modified_search + ''')
+      ORDER BY name;'''
+
+    print(query)
 
     song_list = []
 
@@ -32,7 +40,7 @@ def get_results(song_search):
         cursor = connection.cursor()
         cursor.execute(query, (song_search))
         for row in cursor:
-            song = {'id':row[0],'highest_pos':row[1],'times_charted':row[2],'top_dates':row[3],'name':row[4],'streams':row[5],'artist':row[6],'followers':row[7],'spotify_id':row[8],'release_date':row[9],'popularity':row[10]}
+            song = {'id':row[0],'name':row[1],'artist':row[2],'highest position':row[3],'streams':row[4]}
             song_list.append(song)
         cursor.close()
         connection.close()
