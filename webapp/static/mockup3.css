@@ -4,47 +4,74 @@
    3 Nov 2021
    */
 
- body{
-   margin: 0px;
- }
+   body{
+     margin: 0px;
+   }
 
-.grid{
-   display: grid;
-   grid-template-rows: 50px 50px auto;
+   table {
+       border-collapse: collapse;
+       margin: auto;
+   }
 
-   /* border-color: black;
-   border-style: solid;
-   border-width: 5px; */
-   grid-template-areas:
-            "menu"
-            "search-area";
- }
+   th, td {
+       border: 1px solid #ddd;
+       padding: 15px;
+   }
 
- .menu{
-   text-align: center;
-   grid-area: menu;
-   height: 50px;
-   background-color: grey;
- }
 
- .menu-button{
-   height: 50px;
-   border-width: 0;
-   background-color: grey;
+   .grid{
+      display: grid;
+      grid-template-rows: auto auto;
+    }
 
- }
+    .content{
+      display: grid;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: auto;
+    }
 
- .menu-button:hover{
-   cursor: pointer;
-   background-color: #D3D3D3;
- }
+    .menu{
+      text-align: center;
+      height: 50px;
+      background-color: grey;
+    }
 
- .search-area{
-   margin-left: 2.5%;
-   margin-top: 16px;
-   grid-area: search-area;
- }
+    .menu-button{
+      height: 50px;
+      border-width: 0;
+      background-color: grey;
 
- .search{
-   width: 50%;
- }
+    }
+
+    .menu-button:hover{
+      cursor: pointer;
+      background-color: #D3D3D3;
+    }
+
+   .left-container{
+     margin-left: 5%;
+     margin-top: 16px;
+   }
+
+   .right-container{
+     margin-right: 5%;
+     margin-top: 16px;
+     border-color: black;
+   }
+
+   .search{
+     width: 75%;
+   }
+
+   .sort{
+     display: none;
+     margin-top: 16px;
+     margin-left: 1%;
+   }
+
+   .add-column{
+     position: absolute;
+     margin-right: 1%;
+     right: 1%;
+     top: 67px;
+   }

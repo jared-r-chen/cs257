@@ -1,5 +1,5 @@
 CREATE TABLE songs (
-    id integer,
+    song_id integer,
     highest_pos integer,
     times_charted integer,
     top_dates text,
@@ -13,12 +13,12 @@ CREATE TABLE songs (
 );
 
 CREATE TABLE genres (
-    id integer,
+    genre_id integer,
     genre text
 );
 
 CREATE TABLE attributes (
-    id integer,
+    attributes_id integer,
     dancaeability decimal,
     energy decimal,
     loudness decimal,
