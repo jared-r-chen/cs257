@@ -15,6 +15,7 @@
 
 
  function search_song(){
+
    // event.preventDefault();
    // let url = getAPIBaseURL() + '/results/';
    let search_string = document.getElementById('search_item').value;
