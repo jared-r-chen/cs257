@@ -48,27 +48,7 @@
          songsTable.style.visibility = 'visible';
          songsTable.innerHTML = tableBody;
          document.getElementById("content").style = "";
-     }
-
-
-     // let sort_bar = " <div class = "sort">
-     //         <form>
-     //           <label>Sort by: </label>
-     //           <input type="text" class = "search" placeholder="Search"/>
-     //
-     //           <input type="checkbox" value="Acsending">
-     //           <label>Acsending </label>
-     //
-     //           <div class = "add-column">
-     //             <label>Add Column: </label>
-     //             <input type="text" class = "search" placeholder="Column Name"/>
-     //           </div>
-     //
-     //         </form>
-     //       </div>"
-
-
-
+       }
       }
     )
     .catch(function(error) {

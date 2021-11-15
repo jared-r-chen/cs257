@@ -33,11 +33,11 @@
 
    fetch(url, {method: 'get'})
 
-   window.alert('fetch');
+   // window.alert('fetch');
 
    .then((response) => response.json())
 
-   window.alert('response');
+   // window.alert('response');
 
    .then(function(songs) {
     //console.log(songs);
