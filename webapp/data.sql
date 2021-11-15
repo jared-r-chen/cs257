@@ -1718,7 +1718,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 34	reggaeton colombiano
 35	pop
 35	post-teen pop
-36	NA
+36	
 37	chicago rap
 38	dance pop
 38	pop
@@ -1760,12 +1760,12 @@ COPY public.genres (genre_id, genre) FROM stdin;
 49	latin hip hop
 49	reggaeton
 49	trap latino
-50
+50	[NA]
 51	argentine hip hop
 51	pop venezolano
 51	trap argentino
 51	trap latino
-52
+52	[NA]
 53	electropop
 53	pop
 54	house
@@ -1780,7 +1780,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 56	indie surf
 56	surf punk
 56	vegas indie
-57
+57	[NA]
 58	puerto rican pop
 58	trap latino
 59	pop
@@ -1803,8 +1803,8 @@ COPY public.genres (genre_id, genre) FROM stdin;
 64	pop
 65	pop
 65	r&b
-66
-67
+66	[NA]
+67	[NA]
 68	modern alternative rock
 68	modern rock
 68	pop
@@ -1818,6 +1818,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 72	brooklyn drill
 72	nyc rap
 73	latin
+399	pop
 73	reggaeton
 73	reggaeton colombiano
 74	latin
@@ -1842,7 +1843,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 82	rap
 82	toronto rap
 83	comic
-84
+84	[NA]
 85	rap
 85	slap house
 86	dance pop
@@ -1883,7 +1884,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 95	rap latina
 95	reggaeton
 95	trap latino
-96
+96	[NA]
 97	dance pop
 97	pop
 98	afrofuturism
@@ -1903,7 +1904,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 102	electropop
 102	pop
 102	post-teen pop
-103
+103	[NA]
 104	modern rock
 104	pop
 104	rock
@@ -1930,10 +1931,10 @@ COPY public.genres (genre_id, genre) FROM stdin;
 109	rap latina
 109	reggaeton
 109	trap latino
-110
+110	[NA]
 111	electropop
 111	pop
-112
+112	[NA]
 113	chill r&b
 113	nyc pop
 114	dance pop
@@ -1955,7 +1956,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 118	pop
 118	post-teen pop
 118	viral pop
-119
+119	[NA]
 120	pop
 120	uk pop
 121	latin pop
@@ -1989,7 +1990,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 130	modern alternative rock
 130	modern rock
 130	pop
-131
+131	[NA]
 132	melodic rap
 132	rap
 132	trap
@@ -2035,22 +2036,22 @@ COPY public.genres (genre_id, genre) FROM stdin;
 149	plugg
 149	vapor trap
 149	viral rap
-150
+150	[NA]
 151	dance pop
 151	piano rock
 151	pop
 151	pop rock
 152	permanent wave
 152	pop
-153
-154
+153	[NA]
+154	[NA]
 155	dance pop
 155	edm
 155	pop
 155	pop dance
 156	forro
 156	sertanejo pop
-157
+157	[NA]
 158	brooklyn drill
 159	art pop
 159	norwegian pop
@@ -2063,8 +2064,8 @@ COPY public.genres (genre_id, genre) FROM stdin;
 163	brooklyn drill
 163	melodic rap
 163	nyc rap
-164	NA
-165
+164	
+165	[NA]
 166	dance pop
 166	pop
 166	post-teen pop
@@ -2122,7 +2123,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 180	toronto rap
 181	pop
 181	post-teen pop
-182
+182	[NA]
 183	contemporary country
 183	country
 183	country road
@@ -2159,7 +2160,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 193	dance pop
 193	pop
 193	post-teen pop
-194
+194	[NA]
 195	funk bh
 195	funk carioca
 196	dance pop
@@ -2206,7 +2207,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 215	pop edm
 215	slap house
 215	tropical house
-216
+216	[NA]
 217	neo mellow
 217	pop rock
 217	singer-songwriter
@@ -2292,7 +2293,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 243	rap
 243	southern hip hop
 243	trap
-244
+244	[NA]
 245	art pop
 245	dance pop
 245	electropop
@@ -2316,7 +2317,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 251	pop rap
 252	puerto rican pop
 252	trap latino
-253
+253	[NA]
 254	argentine hip hop
 254	pop venezolano
 254	trap argentino
@@ -2392,11 +2393,11 @@ COPY public.genres (genre_id, genre) FROM stdin;
 283	melodic rap
 283	rap
 283	trap
-284
+284	[NA]
 285	modern rock
 285	pop rap
 285	seattle hip hop
-286
+286	[NA]
 287	ohio hip hop
 287	pop rap
 288	dance pop
@@ -2472,13 +2473,13 @@ COPY public.genres (genre_id, genre) FROM stdin;
 308	pop rap
 308	rap
 308	trap
-309
+309	[NA]
 310	latin
 310	reggaeton
 310	trap latino
 311	funk 150 bpm
 311	funk carioca
-312
+312	[NA]
 313	lgbtq+ hip hop
 313	pop rap
 314	chicago rap
@@ -2516,7 +2517,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 324	post-teen pop
 325	indie rock italiano
 325	italian pop
-326
+326	[NA]
 327	electropop
 327	escape room
 327	pop
@@ -2532,7 +2533,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 331	melodic rap
 332	k-pop
 332	k-pop boy group
-333
+333	[NA]
 334	detroit hip hop
 334	hip hop
 334	rap
@@ -2594,7 +2595,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 353	chicago indie
 353	indie pop
 353	pop
-354
+354	[NA]
 355	brooklyn drill
 355	melodic rap
 355	nyc rap
@@ -2647,7 +2648,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 371	reggaeton
 371	reggaeton flow
 371	trap latino
-372
+372	[NA]
 373	canadian pop
 373	pop
 373	post-teen pop
@@ -2666,7 +2667,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 376	southern hip hop
 376	trap
 377	london rap
-378
+378	[NA]
 379	rap
 379	trap
 380	argentine hip hop
@@ -2722,10 +2723,9 @@ COPY public.genres (genre_id, genre) FROM stdin;
 397	funk pop
 397	pagode baiano
 397	pop nacional
-398
-399	pop
+398	[NA]
 399	post-teen pop
-400
+400	[NA]
 401	latin
 401	reggaeton
 401	reggaeton colombiano
@@ -2781,7 +2781,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 417	dance pop
 417	pop
 417	post-teen pop
-418
+418	[NA]
 419	modern rock
 419	rock
 420	rap
@@ -2799,7 +2799,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 426	permanent wave
 426	rock
 426	sheffield indie
-427
+427	[NA]
 428	latin
 428	reggaeton
 428	reggaeton colombiano
@@ -2839,7 +2839,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 441	post-teen pop
 442	pop
 442	post-teen pop
-443
+443	[NA]
 444	latin
 444	panamanian pop
 444	reggaeton
@@ -2855,7 +2855,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 448	dance pop
 448	pop
 448	post-teen pop
-449
+449	[NA]
 450	alt z
 450	australian pop
 450	dance pop
@@ -2902,13 +2902,13 @@ COPY public.genres (genre_id, genre) FROM stdin;
 463	new wave
 463	new wave pop
 463	permanent wave
+694	pop
 463	soft rock
 463	synthpop
 464	colombian pop
 464	reggaeton colombiano
-465	NA
+465	
 466	latin
-587	pop
 466	reggaeton
 466	reggaeton colombiano
 467	canadian pop
@@ -3023,7 +3023,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 505	hip hop
 505	pop rap
 505	rap
-506
+506	[NA]
 507	brooklyn drill
 508	chicago rap
 508	melodic rap
@@ -3079,6 +3079,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 524	rap
 525	urbano espanol
 526	dance pop
+1450	rap
 526	electropop
 526	etherpop
 526	indie poptimism
@@ -3095,13 +3096,13 @@ COPY public.genres (genre_id, genre) FROM stdin;
 529	pop
 530	pop
 530	uk pop
-531	NA
+531	
 532	german hip hop
 532	german pop
 533	hip hop
 533	pop rap
 533	rap
-534
+534	[NA]
 535	alt z
 535	dance pop
 535	electropop
@@ -3132,7 +3133,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 541	post-teen pop
 542	pop
 542	uk pop
-543
+543	[NA]
 544	argentine hip hop
 544	pop venezolano
 544	trap argentino
@@ -3142,7 +3143,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 545	reggaeton colombiano
 546	puerto rican pop
 546	trap latino
-547
+547	[NA]
 548	emo rap
 548	miami hip hop
 549	pop
@@ -3265,6 +3266,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 586	pop
 586	post-teen pop
 587	dance pop
+587	pop
 587	pop rap
 587	r&b
 587	rap
@@ -3276,7 +3278,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 589	post-teen pop
 589	tropical house
 589	uk pop
-590
+590	[NA]
 591	trap queen
 592	dance pop
 592	pop
@@ -3318,7 +3320,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 609	post-teen pop
 610	bedroom soul
 610	pop
-611
+611	[NA]
 612	brostep
 612	edm
 612	pop
@@ -3365,7 +3367,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 623	lounge
 623	rockabilly
 623	vocal jazz
-624
+624	[NA]
 625	adult standards
 625	canadian pop
 625	jazz pop
@@ -3394,7 +3396,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 631	canadian pop
 631	pop
 631	post-teen pop
-632
+632	[NA]
 633	musical advocacy
 634	album rock
 634	art rock
@@ -3414,7 +3416,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 636	folk rock
 636	mellow gold
 636	rock
-637	NA
+637	
 638	adult standards
 638	lounge
 638	soul
@@ -3443,8 +3445,8 @@ COPY public.genres (genre_id, genre) FROM stdin;
 643	soft rock
 644	rock-and-roll
 644	rockabilly
-645
-646
+645	[NA]
+646	[NA]
 647	australian dance
 647	australian pop
 647	dance pop
@@ -3458,7 +3460,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 648	easy listening
 648	lounge
 648	vocal jazz
-649
+649	[NA]
 650	glam rock
 650	mellow gold
 650	piano rock
@@ -3478,7 +3480,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 654	rock
 654	soft rock
 654	yacht rock
-655	NA
+655	
 656	permanent wave
 656	pop
 657	dance pop
@@ -3510,7 +3512,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 664	detroit hip hop
 664	hip hop
 664	rap
-665
+665	[NA]
 666	adult standards
 666	canadian pop
 666	jazz pop
@@ -3528,7 +3530,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 671	soundtrack
 672	pop
 672	post-teen pop
-673
+673	[NA]
 674	canadian pop
 674	dance pop
 674	pop
@@ -3550,7 +3552,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 677	pop
 677	post-teen pop
 677	talent show
-678
+678	[NA]
 679	dance pop
 679	pop
 679	post-teen pop
@@ -3612,7 +3614,6 @@ COPY public.genres (genre_id, genre) FROM stdin;
 693	yacht rock
 694	dance pop
 694	hip pop
-694	pop
 694	post-teen pop
 695	pop
 695	post-teen pop
@@ -3713,7 +3714,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 725	reggaeton
 725	trap latino
 726	australian hip hop
-727
+727	[NA]
 728	cali rap
 729	latin
 729	reggaeton
@@ -3784,7 +3785,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 749	italian pop
 749	trap italiana
 750	south african house
-751	NA
+751	
 752	italian hip hop
 752	italian pop
 752	trap italiana
@@ -3891,7 +3892,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 783	rap
 783	trap
 784	contemporary country
-785	NA
+785	
 786	alternative r&b
 786	viral pop
 787	latin
@@ -3946,7 +3947,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 802	reggaeton colombiano
 803	rap
 803	trap
-804
+804	[NA]
 805	dance pop
 805	pop
 805	post-teen pop
@@ -4004,7 +4005,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 821	electropop
 821	pop
 821	post-teen pop
-822
+822	[NA]
 823	pop rap
 824	argentine hip hop
 824	trap argentino
@@ -4027,7 +4028,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 828	uk pop
 829	canadian hip hop
 829	pop
-830
+830	[NA]
 831	k-pop
 831	k-pop girl group
 832	hip hop
@@ -4175,7 +4176,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 875	viral pop
 876	alternative r&b
 876	viral pop
-877	NA
+877	
 878	dance pop
 878	edm
 878	electro house
@@ -4379,7 +4380,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 939	uk pop
 940	chicago rap
 940	melodic rap
-941
+941	[NA]
 942	german hip hop
 942	german pop
 943	pop
@@ -4517,7 +4518,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 991	latin
 991	reggaeton
 991	reggaeton colombiano
-992
+992	[NA]
 993	conscious hip hop
 993	hip hop
 993	north carolina hip hop
@@ -4692,7 +4693,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1062	post-teen pop
 1062	r&b
 1063	german hip hop
-1064
+1064	[NA]
 1065	dance pop
 1065	pop
 1065	post-teen pop
@@ -4713,7 +4714,6 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1070	melodic metalcore
 1070	metalcore
 1070	rock
-1335	rap
 1070	uk metalcore
 1071	boy band
 1071	dance pop
@@ -4732,7 +4732,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1074	toronto rap
 1075	dance pop
 1075	pop
-1076
+1076	[NA]
 1077	pop
 1078	rap
 1078	trap
@@ -4786,7 +4786,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1092	pop
 1092	pop dance
 1092	tropical house
-1093
+1093	[NA]
 1094	memphis hip hop
 1095	alt z
 1095	indie cafe pop
@@ -4818,7 +4818,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1105	electropop
 1105	pop
 1105	post-teen pop
-1106
+1106	[NA]
 1107	canadian hip hop
 1107	canadian trap
 1107	hip hop
@@ -4933,7 +4933,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1140	pop
 1140	pop dance
 1140	tropical house
-1141	NA
+1141	
 1142	german drill
 1142	german hip hop
 1143	german hip hop
@@ -5017,12 +5017,12 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1164	pop
 1165	rap
 1165	slap house
-1166
+1166	[NA]
 1167	latin
 1167	latin hip hop
 1167	reggaeton
 1167	trap latino
-1168
+1168	[NA]
 1169	latin
 1169	panamanian pop
 1169	reggaeton
@@ -5078,7 +5078,6 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1184	melodic rap
 1184	nyc rap
 1185	latin
-1513	pop
 1185	reggaeton
 1185	trap latino
 1186	banda
@@ -5208,7 +5207,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1213	toronto rap
 1214	colombian pop
 1214	reggaeton colombiano
-1215
+1215	[NA]
 1216	canadian hip hop
 1216	canadian trap
 1216	melodic rap
@@ -5355,7 +5354,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1256	canadian contemporary r&b
 1256	canadian pop
 1256	pop
-1257
+1257	[NA]
 1258	atl hip hop
 1258	atl trap
 1258	rap
@@ -5582,7 +5581,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1322	trap
 1323	k-pop
 1323	k-pop boy group
-1324
+1324	[NA]
 1325	latin
 1325	latin hip hop
 1325	latin pop
@@ -5623,6 +5622,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1334	trap
 1335	melodic rap
 1335	philly rap
+1335	rap
 1335	trap
 1336	venezuelan hip hop
 1337	melodic rap
@@ -5775,7 +5775,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1379	pop rap
 1379	post-teen pop
 1379	trap queen
-1380
+1380	[NA]
 1381	k-pop
 1381	k-pop boy group
 1382	k-pop
@@ -5829,8 +5829,8 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1398	pop rap
 1399	german cloud rap
 1399	german hip hop
-1400
-1401
+1400	[NA]
+1401	[NA]
 1402	latin
 1402	r&b en espanol
 1402	reggaeton
@@ -5890,7 +5890,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1420	canadian pop
 1420	pop
 1420	post-teen pop
-1421
+1421	[NA]
 1422	german hip hop
 1423	australian psych
 1423	neo-psychedelic
@@ -5906,7 +5906,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1428	canadian pop
 1428	pop
 1428	post-teen pop
-1429
+1429	[NA]
 1430	dance pop
 1430	pop
 1430	post-teen pop
@@ -5976,10 +5976,9 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1450	atl hip hop
 1450	hip hop
 1450	melodic rap
-1450	rap
 1450	trap
 1451	german hip hop
-1452
+1452	[NA]
 1453	conscious hip hop
 1453	hip hop
 1453	north carolina hip hop
@@ -5990,7 +5989,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1454	trap latino
 1455	pop rap
 1455	rhode island rap
-1456
+1456	[NA]
 1457	detroit hip hop
 1457	hip hop
 1457	rap
@@ -6067,7 +6066,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1480	pop
 1480	pop rap
 1480	trap queen
-1481
+1481	[NA]
 1482	basshall
 1482	turkish trap
 1483	chicago rap
@@ -6168,6 +6167,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1512	pop
 1512	post-teen pop
 1513	dance pop
+1513	pop
 1513	post-teen pop
 1514	dance pop
 1514	pop
@@ -6179,7 +6179,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1517	dance pop
 1517	pop
 1517	post-teen pop
-1518
+1518	[NA]
 1519	dance pop
 1519	pop
 1519	post-teen pop
@@ -6253,7 +6253,7 @@ COPY public.genres (genre_id, genre) FROM stdin;
 1537	southern hip hop
 1537	trap
 1538	cali rap
-1539	NA
+1539	
 1540	german hip hop
 1541	dance pop
 1541	pop
@@ -7872,3 +7872,4 @@ COPY public.songs (song_id, highest_pos, times_charted, top_dates, name, streams
 --
 -- PostgreSQL database dump complete
 --
+
