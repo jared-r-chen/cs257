@@ -59,9 +59,12 @@ def create_genres():
             for row in scanner:
                 genre_list = []
                 current_genre = row[9].strip(' ');
+                current_genre = row[9].strip('[]');
+
                 if not current_genre:
                     current_genre = '[NA]'
-                current_genre = current_genre[1:-1]
+                # print(row[0], 'and ' + current_genre)
+                # current_genre = current_genre[1:-1]
                 genre_list = current_genre.split(',')
                 for genre in genre_list:
                     genre = genre.strip(" '")
