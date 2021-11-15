@@ -53,7 +53,6 @@ def get_results(song_search):
 def get_songs_like(song_search):
 
     modified_search = "'%%" + song_search + "%%'"
-    print(modified_search)
 
     query_1 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence
       FROM songs, attributes
@@ -63,14 +62,14 @@ def get_songs_like(song_search):
       FROM songs, attributes
       WHERE song_id = attributes_id;'''
 
-    print(query_1)
-
     song_list = []
+
+    found_song = {'id':0,'name':'none','artist':'none', 'dancaeability':0.0, 'energy':0.0, 'loudness':0.0, 'speechiness':0.0, 'acousticness':0.0, 'liveness':0.0, 'tempo':0.0, 'duration':0.0, 'valence':0.0}
 
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        cursor.execute(query, (song_search))
+        cursor.execute(query_1, (song_search))
         for row in cursor:
             found_song = {'id':row[0],'name':row[1],'artist':row[2], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
         cursor.close()
@@ -81,11 +80,11 @@ def get_songs_like(song_search):
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        cursor.execute(query, (song_search))
+        cursor.execute(query_2)
         for row in cursor:
             if row[0] != found_song['id']:
-                likeness = (1-abs(found_song['dancaeability']-row[4]))+(1-abs(found_song['energy']-row[5]))+(26.8-abs(found_song['loudness']-row[6]))/30+(1-abs(found_song['speechiness']-row[7]))+(1-abs(found_song['acousticness']-row[8]))/2+(1-abs(found_song['liveness']-row[9]))/3+(160-abs(found_song['tempo']-row[10]))/640+(558000-abs(found_song['duration']-row[11]))/3348000+(1-abs(found_song['valence']-row[12]))/10
-                song = {'id':row[0],'name':row[1],'artist':row[2],'likeness':likeness}
+                likeness = (1.0-abs(float(found_song['dancaeability'])-float(row[4])))+(1.0-abs(float(found_song['energy'])-float(row[5])))+(26.8-abs(float(found_song['loudness'])-float(row[6])))/30+(1.0-abs(float(found_song['speechiness'])-float(row[7])))+(1.0-abs(float(found_song['acousticness'])-float(row[8])))/2+(1.0-abs(float(found_song['liveness'])-float(row[9])))/3+(160.0-abs(float(found_song['tempo'])-float(row[10])))/640+(558000.0-abs(float(found_song['duration'])-float(row[11])))/3348000+(1.0-abs(float(found_song['valence'])-float(row[12])))/10
+                song = {'id':row[0],'name':row[1],'artist':row[2],'likeness':round(likeness,4)}
                 song_list.append(song)
         cursor.close()
         connection.close()
@@ -95,6 +94,6 @@ def get_songs_like(song_search):
     def myFunc(e):
         return e['likeness']
 
-    song_list.sort(key=myFunc)
+    song_list.sort(reverse=True, key=myFunc)
 
     return json.dumps(song_list[0:20])

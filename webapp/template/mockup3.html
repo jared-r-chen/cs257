@@ -3,8 +3,8 @@
     <head>
         <!-- <meta charset="UTF-8"> -->
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        <link rel="stylesheet" type="text/css" href="../static/mockup3.css" />
-        <script type="text/javascript" src="../static/mockup3.js" ></script>
+        <<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup3.css') }}" />
+        <script type="text/javascript" src="{{ url_for('static', filename='mockup3.js') }}" ></script>
         <title>Find Songs Like</title>
 
     <body>
@@ -13,7 +13,7 @@
           <form>
             <!-- <button class = "menu-button" formaction="./index.html">Index</button> -->
             <button class = "menu-button" formaction="./">New Search</button>
-            <button class = "menu-button" formaction="location.reload();">Find Songs Like</button>
+            <button class = "menu-button" onclick="location.reload();">Find Songs Like</button>
             <button class = "menu-button" formaction="./help">Help</button>
           </form>
         </div>
@@ -27,7 +27,7 @@
            <label>Genre Search Bar</label> </br>
            <input type="text" class = "search" placeholder="Genre search"/> </br></br>
 
-           <button onclick='find_songs_like();'>Search</button>
+           <button onclick='find_songs_like()'>Search</button>
 
           </form>
           </div>

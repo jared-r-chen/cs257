@@ -15,8 +15,6 @@
 
 
  function find_songs_like(){
-
-   window.alert('function called');
    // event.preventDefault();
    // let url = getAPIBaseURL() + '/results/';
    let search_string = document.getElementById('search_item').value;
@@ -24,20 +22,11 @@
    //console.log(search_string);
    let url = getAPIBaseURL() + '/songs-like/' + search_string;
 
-   window.alert('url');
-
    document.getElementById('content').innerHTML = '';
-   document.getElementById('sort-block').style.display = 'block';
-
-   window.alert('pre-fetch');
 
    fetch(url, {method: 'get'})
 
-   window.alert('fetch');
-
    .then((response) => response.json())
-
-   window.alert('response');
 
    .then(function(songs) {
     //console.log(songs);
