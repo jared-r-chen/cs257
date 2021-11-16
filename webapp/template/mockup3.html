@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- <meta charset="UTF-8"> -->
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        <!-- <<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup3.css') }}" /> -->
-        <script type="text/javascript" src="{{ url_for('static', filename='mockup3.js') }}" ></script>
-        <link rel="stylesheet" type="text/css" href="../static/mockup3.css" />
+        <!-- <script type="text/javascript" src="{{ url_for('static', filename='mockup3.js') }}" ></script> -->
+        <link rel="stylesheet" type="text/css" href="../static/mockup1.css" />
         <script language="JavaScript" type="text/javascript" src="../static/mockup3.js" ></script>
 
         <title>Find Songs Like</title>
@@ -30,18 +28,31 @@
            <label>Genre Search Bar</label> </br>
            <input type="text" class = "search" placeholder="Genre search"/> </br></br>
 
-<!-- <<<<<<< HEAD -->
-           <!-- <button onclick='find_songs_like()'>Search</button> -->
-<!-- ======= -->
            <button onclick="find_songs_like();">Search</button>
-<!-- >>>>>>> refs/remotes/origin/main -->
 
           </form>
           </div>
         </div>
-      <div>
-        <p><table id="songs_table"></table></p>
-      </div>
+
+
+        <div>
+          <div class = "sort" id = "sort-block">
+            <form>
+              <label>Sort by: </label>
+              <input type="text" placeholder="Search"/>
+
+              <input type="checkbox" value="Acsending">
+              <label>Acsending </label>
+
+              <div class = "add-column">
+                <label>Add Column: </label>
+                <input type="text" placeholder="Column Name"/>
+              </div>
+
+            </form>
+          </div>
+          <p><table id="songs_table"></table></p>
+        </div>
 
       </div>
 

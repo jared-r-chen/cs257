@@ -23,20 +23,10 @@
    let url = getAPIBaseURL() + '/songs-like/' + search_string;
 
    document.getElementById('content').innerHTML = '';
+   document.getElementById('sort-block').style.display = 'block';
 
    fetch(url, {method: 'get'})
-
-<<<<<<< HEAD
    .then((response) => response.json())
-
-=======
-   // window.alert('fetch');
-
-   .then((response) => response.json())
-
-   // window.alert('response');
-
->>>>>>> refs/remotes/origin/main
    .then(function(songs) {
     //console.log(songs);
 
