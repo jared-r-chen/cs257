@@ -49,10 +49,18 @@
            <div class = "sort" id = "sort-block">
              <form>
                <label>Sort by: </label>
-               <input type="text" placeholder="Search"/>
+               <!-- <input type="text" placeholder="Search"/> -->
+               <select id="sort-tag" onchange="sort_results();">
+                 <option value="name">Name</option>
+                 <option value="song_id">ID</option>
+                 <option value="artist">Artist</option>
+                 <option value="highest_pos">Highest Ranking</option>
+                 <option value="streams">Streams</option>
 
-               <input type="checkbox" value="Acsending">
-               <label>Acsending </label>
+               </select>
+
+               <input type="checkbox" id= "order-check" onclick="sort_results();">
+               <label>Flip Sort Order </label>
 
                <div class = "add-column">
                  <label>Add Column: </label>

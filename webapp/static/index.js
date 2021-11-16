@@ -5,6 +5,18 @@
 
  // Returns the base URL of the API, onto which endpoint
  // components can be appended.
+
+ // window.onload = initialize;
+ //
+ // function initialize() {
+ //     let element = document.getElementById('sort-tag');
+ //     if (element) {
+ //         element.onchange = sort_results;
+ //     }
+ // }
+ let global_search_string = '';
+
+
  function getAPIBaseURL() {
      let baseURL = window.location.protocol
                      + '//' + window.location.hostname
@@ -13,11 +25,63 @@
      return baseURL;
  }
 
+ function sort_results(){
+   let search_string = global_search_string
+   let sort_tag = document.getElementById('sort-tag').value;
+   let sort_order = 'ASC'
+   if (document.getElementById('order-check').checked){
+     sort_order = 'DESC'
+   }
+
+   let url = getAPIBaseURL() + '/results/' + search_string + '?key=' + sort_tag + '&order=' + sort_order;
+
+
+   fetch(url, {method: 'get'})
+
+   .then((response) => response.json())
+
+   .then(function(songs) {
+    //console.log(songs);
+
+     let tableBody = '';
+     tableBody += '<tr>'
+                     + '<td>' + 'ID' + '</td>'
+                     + '<td>' + 'Name' + '</td>'
+                     + '<td>' + 'Artist' + '</td>'
+                     + '<td>' + 'Highest Position' + '</td>'
+                     + '<td>' + 'Streams' + '</td>'
+                     + '</tr>\n';
+     for (let i = 0; i < songs.length; i++) {
+         //let song = songs[i];
+         tableBody += '<tr>'
+                         + '<td>' + songs[i].id + '</td>'
+                         + '<td>' + songs[i].name + '</td>'
+                         + '<td>' + songs[i].artist + '</td>'
+                         + '<td>' + songs[i].highest_pos + '</td>'
+                         + '<td>' + songs[i].streams + '</td>'
+                         + '</tr>\n';
+     }
+     //document.getElementById("content").innerHTML = tableBody;
+    let songsTable = document.getElementById('songs_table');
+    songsTable.innerHTML = '';
+     if (songsTable) {
+         songsTable.style.visibility = 'visible';
+         songsTable.innerHTML = tableBody;
+         document.getElementById("content").style = "";
+       }
+      }
+    )
+    .catch(function(error) {
+        console.log(error);
+    });
+ }
+
 
  function search_song(){
    // event.preventDefault();
    // let url = getAPIBaseURL() + '/results/';
    let search_string = document.getElementById('search_item').value;
+   global_search_string = search_string;
    //console.log(search_string);
    let url = getAPIBaseURL() + '/results/' + search_string;
 
@@ -32,6 +96,13 @@
     //console.log(songs);
 
      let tableBody = '';
+     tableBody += '<tr>'
+                     + '<td>' + 'ID' + '</td>'
+                     + '<td>' + 'Name' + '</td>'
+                     + '<td>' + 'Artist' + '</td>'
+                     + '<td>' + 'Highest Position' + '</td>'
+                     + '<td>' + 'Streams' + '</td>'
+                     + '</tr>\n';
      for (let i = 0; i < songs.length; i++) {
          //let song = songs[i];
          tableBody += '<tr>'

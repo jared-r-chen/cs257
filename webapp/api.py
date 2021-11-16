@@ -22,6 +22,16 @@ def get_connection():
 
 @api.route('/results/<song_search>')
 def get_results(song_search):
+    sort_by = flask.request.args.get('key')
+    sort_order = flask.request.args.get('order')
+    string_sort_by = str(sort_by)
+    string_sort_order = str(sort_order)
+
+    if sort_by is None:
+        string_sort_by = 'name'
+    if sort_order is None:
+        string_sort_order = 'ASC'
+
 
     modified_search = "'%%" + song_search + "%%'"
     print(modified_search)
@@ -29,7 +39,7 @@ def get_results(song_search):
     query = '''SELECT song_id, name, artist, highest_pos, streams
       FROM songs
       WHERE UPPER(name) LIKE UPPER(''' + modified_search + ''')
-      ORDER BY name;'''
+      ORDER BY ''' + string_sort_by +''' ''' + string_sort_order + ''';'''
 
     print(query)
 
@@ -51,6 +61,23 @@ def get_results(song_search):
 
 @api.route('/songs-like/<song_search>')
 def get_songs_like(song_search):
+    sort_by = flask.request.args.get('key')
+    sort_order = flask.request.args.get('order')
+    string_sort_by = str(sort_by)
+    string_sort_order = str(sort_order)
+    boolean_sort_order = True
+
+    if sort_by is None:
+        string_sort_by = 'likeness'
+    if sort_order is None:
+        string_sort_order = 'DESC'
+    if string_sort_order == 'ASC':
+        boolean_sort_order = False
+    if string_sort_by == 'likeness' and sort_by is None:
+        boolean_sort_order = True
+
+
+
 
     modified_search = "'%%" + song_search + "%%'"
 
@@ -86,6 +113,7 @@ def get_songs_like(song_search):
                 likeness = (1.0-abs(float(found_song['dancaeability'])-float(row[4])))+(1.0-abs(float(found_song['energy'])-float(row[5])))+(26.8-abs(float(found_song['loudness'])-float(row[6])))/30+(1.0-abs(float(found_song['speechiness'])-float(row[7])))+(1.0-abs(float(found_song['acousticness'])-float(row[8])))/2+(1.0-abs(float(found_song['liveness'])-float(row[9])))/3+(160.0-abs(float(found_song['tempo'])-float(row[10])))/640+(558000.0-abs(float(found_song['duration'])-float(row[11])))/3348000+(1.0-abs(float(found_song['valence'])-float(row[12])))/10
                 song = {'id':row[0],'name':row[1],'artist':row[2],'likeness':round(likeness,4)}
                 song_list.append(song)
+
         cursor.close()
         connection.close()
     except Exception as e:
@@ -94,6 +122,13 @@ def get_songs_like(song_search):
     def myFunc(e):
         return e['likeness']
 
-    song_list.sort(reverse=True, key=myFunc)
+    def second_sort(e):
+        print(string_sort_by)
+        return e[string_sort_by]
 
-    return json.dumps(song_list[0:20])
+
+    song_list.sort(reverse=True, key=myFunc)
+    song_list = song_list[0:20]
+    song_list.sort(reverse = boolean_sort_order, key=second_sort)
+
+    return json.dumps(song_list)
