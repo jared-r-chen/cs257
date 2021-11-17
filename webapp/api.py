@@ -78,12 +78,11 @@ def get_songs_like(song_search):
 
 
 
-
     modified_search = "'%%" + song_search + "%%'"
 
     query_1 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence
       FROM songs, attributes
-      WHERE UPPER(name) = UPPER(''' + modified_search + ''') AND song_id = attributes_id;'''
+      WHERE UPPER(name) LIKE UPPER(''' + modified_search + ''') AND song_id = attributes_id;'''
 
     query_2 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence
       FROM songs, attributes
@@ -98,11 +97,14 @@ def get_songs_like(song_search):
         cursor = connection.cursor()
         cursor.execute(query_1, (song_search))
         for row in cursor:
+            print(row[1])
             found_song = {'id':row[0],'name':row[1],'artist':row[2], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
         cursor.close()
         connection.close()
     except Exception as e:
         print(e, file=sys.stderr)
+
+    print(found_song['artist'])
 
     try:
         connection = get_connection()
