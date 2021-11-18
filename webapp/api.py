@@ -171,7 +171,7 @@ def get_songs_like(song_search):
     except Exception as e:
         print(e, file=sys.stderr)
 
-    def myFunc(e):
+    def first_sort(e):
         return e['likeness']
 
     def second_sort(e):
@@ -179,8 +179,10 @@ def get_songs_like(song_search):
         return e[string_sort_by]
 
 
-    song_list.sort(reverse=True, key=myFunc)
+    song_list.sort(reverse=True, key=first_sort)
     song_list = song_list[0:20]
     song_list.sort(reverse = boolean_sort_order, key=second_sort)
+
+    song_list.insert(0, found_song)
 
     return json.dumps(song_list)
