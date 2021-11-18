@@ -18,6 +18,8 @@ Working features:
 In progress:
 -search by artist and/or artist and/or genre
 -genre search in song-like function
+-keep search bar in results page
+-implement enter key functionality
 
 Wishlist:
 - Calendar to sort songs by release date

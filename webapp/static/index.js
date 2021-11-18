@@ -15,6 +15,7 @@
  //     }
  // }
  let global_search_string = '';
+ let global_artist_string = '';
 
 
  function getAPIBaseURL() {
@@ -26,14 +27,14 @@
  }
 
  function sort_results(){
-   let search_string = global_search_string
+   let search_song = global_search_string
    let sort_tag = document.getElementById('sort-tag').value;
    let sort_order = 'ASC'
    if (document.getElementById('order-check').checked){
      sort_order = 'DESC'
    }
 
-   let url = getAPIBaseURL() + '/results/' + search_string + '?key=' + sort_tag + '&order=' + sort_order;
+   let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist=' + global_artist_string + '&key=' + sort_tag + '&order=' + sort_order;
 
 
    fetch(url, {method: 'get'})
@@ -80,10 +81,12 @@
  function search_song(){
    // event.preventDefault();
    // let url = getAPIBaseURL() + '/results/';
-   let search_string = document.getElementById('search_item').value;
-   global_search_string = search_string;
+   let search_song = document.getElementById('search_song').value;
+   let search_artist = document.getElementById('search_artist').value;
+   global_search_string = search_song;
+   global_artist_string = search_artist;
    //console.log(search_string);
-   let url = getAPIBaseURL() + '/results/' + search_string;
+   let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist=' + search_artist;
 
    document.getElementById('content').innerHTML = '';
    document.getElementById('sort-block').style.display = 'block';

@@ -20,12 +20,17 @@ def get_connection():
                             password=config.password)
 
 
-@api.route('/results/<song_search>')
-def get_results(song_search):
+@api.route('/results')
+def get_results():
+    song_search = flask.request.args.get('song')
+    artist_search = flask.request.args.get('artist')
     sort_by = flask.request.args.get('key')
     sort_order = flask.request.args.get('order')
     string_sort_by = str(sort_by)
     string_sort_order = str(sort_order)
+    string_song_search = str(song_search)
+    string_artist = str(artist_search)
+
 
     if sort_by is None:
         string_sort_by = 'name'
@@ -33,12 +38,14 @@ def get_results(song_search):
         string_sort_order = 'ASC'
 
 
-    modified_search = "'%%" + song_search + "%%'"
-    print(modified_search)
+    modified_song = "'%%" + string_song_search + "%%'"
+    modified_artist = "'%%" + string_artist + "%%'"
+    print(modified_song)
 
     query = '''SELECT song_id, name, artist, highest_pos, streams
       FROM songs
-      WHERE UPPER(name) LIKE UPPER(''' + modified_search + ''')
+      WHERE UPPER(name) LIKE UPPER(''' + modified_song + ''')
+      AND UPPER(artist) LIKE UPPER(''' + modified_artist + ''')
       ORDER BY ''' + string_sort_by +''' ''' + string_sort_order + ''';'''
 
     print(query)
@@ -78,11 +85,11 @@ def get_songs_like(song_search):
 
 
 
-    modified_search = "'%%" + song_search + "%%'"
+    modified_song = "'%%" + song_search + "%%'"
 
     query_1 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence
       FROM songs, attributes
-      WHERE UPPER(name) LIKE UPPER(''' + modified_search + ''') AND song_id = attributes_id;'''
+      WHERE UPPER(name) LIKE UPPER(''' + modified_song + ''') AND song_id = attributes_id;'''
 
     query_2 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence
       FROM songs, attributes
