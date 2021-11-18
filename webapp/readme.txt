@@ -14,12 +14,14 @@ Working features:
 - flip order of results (greatest to least --> least to greatest or A-Z --> Z-A)
 - songs like function (by song name only, genre doesn't work yet)
 - help page is accessible 
-
-In progress:
 -search by artist and/or artist and/or genre
 -genre search in song-like function
 -keep search bar in results page
 -implement enter key functionality
+
+In progress:
+Display which song is being compared too in songs like function
+-remove calendar, unrealistic
 
 Wishlist:
 - Calendar to sort songs by release date

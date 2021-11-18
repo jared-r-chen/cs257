@@ -70,8 +70,8 @@ def get_results():
     genre_sql_code = ''
     genre_list = string_genres.split(",")
 
-    print('test')
-    print(len(genre_list))
+    # print('test')
+    # print(len(genre_list))
     for item in genre_list:
         if genre_sql_code == '' and len(genre_list) > 1:
             genre_sql_code += "AND (genre = '" + item + "') "
@@ -88,7 +88,7 @@ def get_results():
       ''' + genre_sql_code + '''
       ORDER BY ''' + string_sort_by +''' ''' + string_sort_order + ''';'''
 
-    print(query)
+    # print(query)
 
     song_list = []
 
@@ -105,7 +105,7 @@ def get_results():
     except Exception as e:
         print(e, file=sys.stderr)
 
-    print(song_list)
+    # print(song_list)
 
     return json.dumps(song_list)
 
@@ -147,14 +147,14 @@ def get_songs_like(song_search):
         cursor = connection.cursor()
         cursor.execute(query_1)
         for row in cursor:
-            print(row[1])
+            # print(row[1])
             found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
         cursor.close()
         connection.close()
     except Exception as e:
         print(e, file=sys.stderr)
 
-    print(found_song['artist'])
+    # print(found_song['artist'])
 
     try:
         connection = get_connection()
