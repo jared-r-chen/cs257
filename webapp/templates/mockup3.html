@@ -13,7 +13,7 @@
         <div class = "menu">
           <form>
             <!-- <button class = "menu-button" formaction="./index.html">Index</button> -->
-            <button class = "menu-button" formaction="./">New Search</button>
+            <button class = "menu-button" formaction="./">Song Search</button>
             <button class = "menu-button" onclick="location.reload();">Find Songs Like</button>
             <button class = "menu-button" formaction="./help">Help</button>
           </form>
@@ -23,12 +23,14 @@
           <div class = "left-container">
 
            <label>Song Search Bar</label> </br>
-           <input type="text" class = "search" id = 'search_item' placeholder="Song name"/> </br></br>
+           <input onkeyup="if(event.keyCode===13){submit.click()}"
+           type="text" class = "search" id = 'search_item' placeholder="Song name"/> </br></br>
 
            <label>Genre Search Bar</label> </br>
-           <input type="text" class = "search" placeholder="Genre search"/> </br></br>
+           <input onkeyup="if(event.keyCode===13){submit.click()}"
+           type="text" class = "search" placeholder="Genre search"/> </br></br>
 
-           <button onclick="find_songs_like();">Search</button>
+           <button onclick="find_songs_like();" id = "submit">Search</button>
 
           </form>
           </div>

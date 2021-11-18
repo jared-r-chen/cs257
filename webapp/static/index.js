@@ -14,8 +14,11 @@
  //         element.onchange = sort_results;
  //     }
  // }
- let global_search_string = '';
- let global_artist_string = '';
+ // let global_search_string = '';
+ // let global_artist_string = '';
+ //
+ //
+
 
 
  function getAPIBaseURL() {
@@ -78,17 +81,19 @@
  }
 
 
+
  function search_song(){
    // event.preventDefault();
    // let url = getAPIBaseURL() + '/results/';
    let search_song = document.getElementById('search_song').value;
    let search_artist = document.getElementById('search_artist').value;
+
    global_search_string = search_song;
    global_artist_string = search_artist;
-   //console.log(search_string);
+
    let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist=' + search_artist;
 
-   document.getElementById('content').innerHTML = '';
+   //document.getElementById('content').innerHTML = '';
    document.getElementById('sort-block').style.display = 'block';
 
    fetch(url, {method: 'get'})

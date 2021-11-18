@@ -53,7 +53,7 @@
      if (songsTable) {
          songsTable.style.visibility = 'visible';
          songsTable.innerHTML = tableBody;
-         document.getElementById("content").style = "";
+         //document.getElementById("content").style = "";
      }
       }
     )
@@ -72,7 +72,7 @@
    //console.log(search_string);
    let url = getAPIBaseURL() + '/songs-like/' + search_string;
 
-   document.getElementById('content').innerHTML = '';
+   //document.getElementById('content').innerHTML = '';
    document.getElementById('sort-block').style.display = 'block';
 
    fetch(url, {method: 'get'})
@@ -103,7 +103,7 @@
      if (songsTable) {
          songsTable.style.visibility = 'visible';
          songsTable.innerHTML = tableBody;
-         document.getElementById("content").style = "";
+         //document.getElementById("content").style = "";
      }
       }
     )

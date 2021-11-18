@@ -15,7 +15,7 @@
          <div class = "menu">
            <form>
              <!-- <button class = "menu-button" formaction="./index.html">Index</button> -->
-             <button class = "menu-button" onclick="location.reload();">New Search</button>
+             <button class = "menu-button" onclick="location.reload();">Song Search</button>
              <button class = "menu-button" formaction="./songs-like">Find Songs Like</button>
              <button class = "menu-button" formaction="./help">Help</button>
            </form>
@@ -26,15 +26,18 @@
            <div class = "left-container">
 
             <label>Song Search Bar</label> </br>
-            <input type="text" class = "search" id = "search_song" placeholder="Song name"/> </br></br>
+            <input onkeyup="if(event.keyCode===13){submit.click()}"
+            type="text" class = "search" id = "search_song" placeholder="Song name"/> </br></br>
 
             <label>Artist Search Bar</label> </br>
-            <input type="text" class = "search" id = "search_artist" placeholder="Artist name"/> </br></br>
+            <input onkeyup="if(event.keyCode===13){submit.click()}"
+            type="text" class = "search" id = "search_artist" placeholder="Artist name"/> </br></br>
 
             <label>Genre Search Bar</label> </br>
-            <input type="text" class = "search" placeholder="Genre search"/> </br></br>
+            <input onkeyup="if(event.keyCode===13){submit.click()}"
+            type="text" class = "search" placeholder="Genre search"/> </br></br>
 
-            <button onclick="search_song();">Search</button>
+            <button onclick="search_song();" id = "submit">Search</button>
 
 
            </div>
@@ -62,10 +65,10 @@
                <input type="checkbox" id= "order-check" onclick="sort_results();">
                <label>Flip Sort Order </label>
 
-               <div class = "add-column">
+               <!-- <div class = "add-column">
                  <label>Add Column: </label>
                  <input type="text" placeholder="Column Name"/>
-               </div>
+               </div> -->
 
              </form>
            </div>
