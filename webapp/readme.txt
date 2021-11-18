@@ -24,6 +24,7 @@ Working features:
 In progress:
 Display which song is being compared too in songs like function
 -implement enter key functionality for genre list
+-highlight which tab user is currently in
 -remove calendar, unrealistic
 
 Wishlist:
