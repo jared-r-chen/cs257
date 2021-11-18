@@ -18,9 +18,12 @@ Working features:
 -genre search in song-like function
 -keep search bar in results page
 -implement enter key functionality
+- bug in genre search where one genre alone cannot be searched
+
 
 In progress:
 Display which song is being compared too in songs like function
+-implement enter key functionality for genre list
 -remove calendar, unrealistic
 
 Wishlist:

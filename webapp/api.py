@@ -73,7 +73,7 @@ def get_results():
     # print('test')
     # print(len(genre_list))
     for item in genre_list:
-        if genre_sql_code == '' and len(genre_list) > 1:
+        if genre_sql_code == '' and item != '':
             genre_sql_code += "AND (genre = '" + item + "') "
         elif len(genre_list) > 1:
             genre_sql_code += "OR (genre = '" + item + "')"
