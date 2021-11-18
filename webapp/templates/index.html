@@ -34,8 +34,19 @@
             type="text" class = "search" id = "search_artist" placeholder="Artist name"/> </br></br>
 
             <label>Genre Search Bar</label> </br>
-            <input onkeyup="if(event.keyCode===13){submit.click()}"
-            type="text" class = "search" placeholder="Genre search"/> </br></br>
+
+            <!-- <input onkeyup="add_genre();"
+            type="text" class = "search" id = "search_genre" placeholder="Genre search"/> </br></br> -->
+
+            <select id="search_genre">
+            </select>
+
+            <button onclick="add_genre();" id = "sumbit_genre">Add Genre</button>
+
+            <button onclick="clear_genre();" >Clear Genres</button> </br></br>
+
+            <div id = genre-block>
+            </div></br>
 
             <button onclick="search_song();" id = "submit">Search</button>
 

@@ -7,6 +7,7 @@ CREATE TABLE songs (
     streams integer,
     artist text,
     followers integer,
+    genres_list text,
     spotify_id text,
     release_date text,
     popularity integer

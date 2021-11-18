@@ -79,3 +79,12 @@ th, td {
   right: 1%;
   top: 67px;
 }
+
+.genre-item {
+  /* width: -moz-fit-content; */
+  width: fit-content;
+  border-radius: 5px;
+  background-color: #5490ff;
+  padding: 5px;
+  margin-bottom: 1em;
+}

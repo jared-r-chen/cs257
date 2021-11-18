@@ -26,12 +26,17 @@ def create_songs():
                 streams = streams.replace(',', '')
 
                 followers = row[7].strip(' ')
+                current_genre = row[9].strip(' ');
                 spotify_id = row[8].strip(' ')
                 release_date = row[10].strip(' ')
                 popularity = row[12].strip(' ')
+
+                current_genre = current_genre.strip('[]');
+                if not current_genre:
+                    current_genre = 'NA'
+
                 if not followers:
                     # print('index number:', row[0], 'followers:', len(row[7]))
-
                     #print('error detected')
                     followers = 0
                     spotify_id = 'NA'
@@ -40,7 +45,7 @@ def create_songs():
 
 
 
-                current_row = [row[0], row[1], row[2], row[3], row[4], streams, row[6], followers, spotify_id, release_date, popularity]
+                current_row = [row[0], row[1], row[2], row[3], row[4], streams, row[6], followers, current_genre, spotify_id, release_date, popularity]
                 song_data.append(current_row)
 
     # writing to csv file
@@ -57,12 +62,12 @@ def create_genres():
     with open('/Users/jared.chen/Downloads/spotify_dataset.csv', newline ='') as csvfile:
             scanner = csv.reader(csvfile, delimiter = ',')
             for row in scanner:
-                genre_list = []
+                # genre_list = []
                 current_genre = row[9].strip(' ');
-                current_genre = row[9].strip('[]');
+                current_genre = current_genre.strip('[]');
 
                 if not current_genre:
-                    current_genre = '[NA]'
+                    current_genre = 'NA'
                 # print(row[0], 'and ' + current_genre)
                 # current_genre = current_genre[1:-1]
                 genre_list = current_genre.split(',')

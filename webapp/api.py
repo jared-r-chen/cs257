@@ -20,16 +20,43 @@ def get_connection():
                             password=config.password)
 
 
+@api.route('/load-genres')
+def load_genres():
+    query = '''  SELECT DISTINCT genre
+        FROM genres
+        ORDER BY genre;'''
+
+    genre_list = []
+
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(query)
+        for row in cursor:
+            genre = {'genre':row[0]}
+            genre_list.append(genre)
+        cursor.close()
+        connection.close()
+    except Exception as e:
+        print(e, file=sys.stderr)
+
+    return json.dumps(genre_list)
+
+
+
 @api.route('/results')
 def get_results():
     song_search = flask.request.args.get('song')
     artist_search = flask.request.args.get('artist')
+    genres = flask.request.args.get('genres')
     sort_by = flask.request.args.get('key')
     sort_order = flask.request.args.get('order')
-    string_sort_by = str(sort_by)
-    string_sort_order = str(sort_order)
     string_song_search = str(song_search)
     string_artist = str(artist_search)
+    string_genres = str(genres)
+    string_sort_by = str(sort_by)
+    string_sort_order = str(sort_order)
+
 
 
     if sort_by is None:
@@ -40,12 +67,25 @@ def get_results():
 
     modified_song = "'%%" + string_song_search + "%%'"
     modified_artist = "'%%" + string_artist + "%%'"
-    print(modified_song)
+    genre_sql_code = ''
+    genre_list = string_genres.split(",")
 
-    query = '''SELECT song_id, name, artist, highest_pos, streams
+    print('test')
+    print(len(genre_list))
+    for item in genre_list:
+        if genre_sql_code == '' and len(genre_list) > 1:
+            genre_sql_code += "AND (genre = '" + item + "') "
+        elif len(genre_list) > 1:
+            genre_sql_code += "OR (genre = '" + item + "')"
+    # print(modified_song)
+
+    query = '''SELECT song_id, name, artist, highest_pos, streams, genres_list
       FROM songs
+      JOIN genres
+      ON song_id = genre_id
       WHERE UPPER(name) LIKE UPPER(''' + modified_song + ''')
       AND UPPER(artist) LIKE UPPER(''' + modified_artist + ''')
+      ''' + genre_sql_code + '''
       ORDER BY ''' + string_sort_by +''' ''' + string_sort_order + ''';'''
 
     print(query)
@@ -55,14 +95,17 @@ def get_results():
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        cursor.execute(query, (song_search))
+        cursor.execute(query)
         for row in cursor:
-            song = {'id':row[0],'name':row[1],'artist':row[2],'highest_pos':row[3],'streams':row[4]}
+            song = {'id':row[0],'name':row[1],'artist':row[2],'highest_pos':row[3],'streams':row[4]
+            , 'genres_list' : row[5]}
             song_list.append(song)
         cursor.close()
         connection.close()
     except Exception as e:
         print(e, file=sys.stderr)
+
+    print(song_list)
 
     return json.dumps(song_list)
 
@@ -87,25 +130,25 @@ def get_songs_like(song_search):
 
     modified_song = "'%%" + song_search + "%%'"
 
-    query_1 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence
+    query_1 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence, genres_list
       FROM songs, attributes
       WHERE UPPER(name) LIKE UPPER(''' + modified_song + ''') AND song_id = attributes_id;'''
 
-    query_2 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence
+    query_2 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence, genres_list
       FROM songs, attributes
       WHERE song_id = attributes_id;'''
 
     song_list = []
 
-    found_song = {'id':0,'name':'none','artist':'none', 'dancaeability':0.0, 'energy':0.0, 'loudness':0.0, 'speechiness':0.0, 'acousticness':0.0, 'liveness':0.0, 'tempo':0.0, 'duration':0.0, 'valence':0.0}
+    found_song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'dancaeability':0.0, 'energy':0.0, 'loudness':0.0, 'speechiness':0.0, 'acousticness':0.0, 'liveness':0.0, 'tempo':0.0, 'duration':0.0, 'valence':0.0}
 
     try:
         connection = get_connection()
         cursor = connection.cursor()
-        cursor.execute(query_1, (song_search))
+        cursor.execute(query_1)
         for row in cursor:
             print(row[1])
-            found_song = {'id':row[0],'name':row[1],'artist':row[2], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
+            found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
         cursor.close()
         connection.close()
     except Exception as e:
@@ -120,7 +163,7 @@ def get_songs_like(song_search):
         for row in cursor:
             if row[0] != found_song['id']:
                 likeness = (1.0-abs(float(found_song['dancaeability'])-float(row[4])))+(1.0-abs(float(found_song['energy'])-float(row[5])))+(26.8-abs(float(found_song['loudness'])-float(row[6])))/30+(1.0-abs(float(found_song['speechiness'])-float(row[7])))+(1.0-abs(float(found_song['acousticness'])-float(row[8])))/2+(1.0-abs(float(found_song['liveness'])-float(row[9])))/3+(160.0-abs(float(found_song['tempo'])-float(row[10])))/640+(558000.0-abs(float(found_song['duration'])-float(row[11])))/3348000+(1.0-abs(float(found_song['valence'])-float(row[12])))/10
-                song = {'id':row[0],'name':row[1],'artist':row[2],'likeness':round(likeness,4)}
+                song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list': row[13], 'likeness':round(likeness,4)}
                 song_list.append(song)
 
         cursor.close()

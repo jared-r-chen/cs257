@@ -14,10 +14,11 @@
  //         element.onchange = sort_results;
  //     }
  // }
- // let global_search_string = '';
- // let global_artist_string = '';
- //
- //
+ let global_search_string = '';
+ let global_artist_string = '';
+ let global_genre_string = '';
+
+window.onload = initialize;
 
 
 
@@ -29,6 +30,56 @@
      return baseURL;
  }
 
+ function initialize(){
+   let url = getAPIBaseURL() + '/load-genres';
+
+   fetch(url, {method: 'get'})
+
+   .then((response) => response.json())
+   .then(function(genres) {
+    //console.log(songs);
+    let genre_HTML_string = "";
+    console.log(genres);
+     for (let i = 0; i < genres.length; i++) {
+       current_genre = genres[i].genre;
+        genre_HTML_string += '<option value="' + current_genre + '">' + current_genre +'</option>'
+
+     }
+     //document.getElementById("content").innerHTML = tableBody;
+    let genre_drop_down = document.getElementById('search_genre');
+      genre_drop_down.innerHTML = genre_HTML_string;
+      }
+    )
+    .catch(function(error) {
+        console.log(error);
+    });
+ }
+
+
+ function add_genre(){
+   let genre = document.getElementById('search_genre').value;
+
+   if(!global_genre_string.includes(genre)){
+     // console.log('should add item');
+     genre_label = '<p class = "genre-item">' + genre + '</p>'
+     let genre_block = document.getElementById('genre-block');
+     genre_block.innerHTML += genre_label;
+   }
+
+   if(global_genre_string === ""){
+     global_genre_string += genre;
+   }
+   else if(!global_genre_string.includes(genre)){
+     global_genre_string += "," + genre;
+   }
+   // console.log(global_genre_string);
+ }
+
+ function clear_genre(){
+     document.getElementById('genre-block').innerHTML = '';
+     global_genre_string = '';
+ }
+
  function sort_results(){
    let search_song = global_search_string
    let sort_tag = document.getElementById('sort-tag').value;
@@ -37,7 +88,8 @@
      sort_order = 'DESC'
    }
 
-   let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist=' + global_artist_string + '&key=' + sort_tag + '&order=' + sort_order;
+   let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist='
+   + global_artist_string + '&genres=' + global_genre_string + '&key=' + sort_tag + '&order=' + sort_order;
 
 
    fetch(url, {method: 'get'})
@@ -54,6 +106,7 @@
                      + '<td>' + 'Artist' + '</td>'
                      + '<td>' + 'Highest Position' + '</td>'
                      + '<td>' + 'Streams' + '</td>'
+                     + '<td>' + 'Genre(s)' + '</td>'
                      + '</tr>\n';
      for (let i = 0; i < songs.length; i++) {
          //let song = songs[i];
@@ -63,6 +116,7 @@
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].highest_pos + '</td>'
                          + '<td>' + songs[i].streams + '</td>'
+                         + '<td>' + songs[i].genres_list + '</td>'
                          + '</tr>\n';
      }
      //document.getElementById("content").innerHTML = tableBody;
@@ -91,7 +145,8 @@
    global_search_string = search_song;
    global_artist_string = search_artist;
 
-   let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist=' + search_artist;
+   let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist='
+   + search_artist + '&genres=' + global_genre_string;
 
    //document.getElementById('content').innerHTML = '';
    document.getElementById('sort-block').style.display = 'block';
@@ -110,6 +165,7 @@
                      + '<td>' + 'Artist' + '</td>'
                      + '<td>' + 'Highest Position' + '</td>'
                      + '<td>' + 'Streams' + '</td>'
+                     + '<td>' + 'Genre(s)' + '</td>'
                      + '</tr>\n';
      for (let i = 0; i < songs.length; i++) {
          //let song = songs[i];
@@ -119,6 +175,7 @@
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].highest_pos + '</td>'
                          + '<td>' + songs[i].streams + '</td>'
+                         + '<td>' + songs[i].genres_list + '</td>'
                          + '</tr>\n';
      }
      //document.getElementById("content").innerHTML = tableBody;

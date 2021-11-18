@@ -36,6 +36,7 @@
                          + '<td>' + 'ID' + '</td>'
                          + '<td>' + 'Name' + '</td>'
                          + '<td>' + 'Artist' + '</td>'
+                         + '<td>' + 'Genre(s)' + '</td>'
                          + '<td>' + 'Likeness Score' + '</td>'
                          + '</tr>\n';
      for (let i = 0; i < songs.length; i++) {
@@ -44,6 +45,7 @@
                          + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
+                         + '<td>' + songs[i].genres_list + '</td>'
                          + '<td>' + songs[i].likeness + '</td>'
                          + '</tr>\n';
      }
@@ -85,6 +87,7 @@
                          + '<td>' + 'ID' + '</td>'
                          + '<td>' + 'Name' + '</td>'
                          + '<td>' + 'Artist' + '</td>'
+                         + '<td>' + 'Genre(s)' + '</td>'
                          + '<td>' + 'Likeness Score' + '</td>'
                          + '</tr>\n';
      for (let i = 0; i < songs.length; i++) {
@@ -93,6 +96,7 @@
                          + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
+                         + '<td>' + songs[i].genres_list + '</td>'
                          + '<td>' + songs[i].likeness + '</td>'
                          + '</tr>\n';
      }
