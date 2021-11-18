@@ -79,7 +79,7 @@ def get_results():
             genre_sql_code += "OR (genre = '" + item + "')"
     # print(modified_song)
 
-    query = '''SELECT song_id, name, artist, highest_pos, streams, genres_list
+    query = '''SELECT DISTINCT song_id, name, artist, highest_pos, streams, genres_list
       FROM songs
       JOIN genres
       ON song_id = genre_id
