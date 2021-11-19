@@ -25,5 +25,8 @@ Working features:
 
 
 In progress:
+-Create api/help route (endpoint documentation)
+- comment code/clean code
+- Update readme.txt to final version
 
 Wishlist:
