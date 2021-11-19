@@ -25,6 +25,7 @@ Working features:
 
 
 In progress:
+-remove ID from results table
 -Create api/help route (endpoint documentation)
 - comment code/clean code
 - Update readme.txt to final version
