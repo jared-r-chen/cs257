@@ -33,13 +33,23 @@ th, td {
  .menu{
    text-align: center;
    height: 50px;
-   background-color: grey;
+   background-color: #5490ff;
  }
 
  .menu-button{
+   font-family: "Times New Roman", Times, serif;
+   font-size: medium;
    height: 50px;
    border-width: 0;
-   background-color: grey;
+   background-color: #5490ff;
+ }
+
+ .menu-current-page{
+   font-family: "Times New Roman", Times, serif;
+   font-size: medium;
+   height: 50px;
+   border-width: 0;
+   background-color: #D3D3D3;
 
  }
 

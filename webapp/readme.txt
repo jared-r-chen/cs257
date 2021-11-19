@@ -21,10 +21,9 @@ Working features:
 - bug in genre search where one genre alone cannot be searched
 -implement enter key functionality for genre list
 -Display which song is being compared too in songs like function
-
+-highlight which tab user is currently in
 
 
 In progress:
--highlight which tab user is currently in
 
 Wishlist:

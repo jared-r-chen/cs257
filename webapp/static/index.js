@@ -120,7 +120,7 @@ window.onload = initialize;
                          + '</tr>\n';
      }
      //document.getElementById("content").innerHTML = tableBody;
-    let songsTable = document.getElementById('songs_table');
+    let songsTable = document.getElementById('songs-table');
     songsTable.innerHTML = '';
      if (songsTable) {
          songsTable.style.visibility = 'visible';
@@ -179,7 +179,7 @@ window.onload = initialize;
                          + '</tr>\n';
      }
      //document.getElementById("content").innerHTML = tableBody;
-    let songsTable = document.getElementById('songs_table');
+    let songsTable = document.getElementById('songs-table');
      if (songsTable) {
          songsTable.style.visibility = 'visible';
          songsTable.innerHTML = tableBody;
