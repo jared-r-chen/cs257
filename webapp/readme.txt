@@ -28,5 +28,8 @@ In progress:
 -Create api/help route (endpoint documentation)
 - comment code/clean code
 - Update readme.txt to final version
+- move extraneous files toe old_files
+- rename files to better naming conventions	
+
 
 Wishlist:
