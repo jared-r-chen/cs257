@@ -3,8 +3,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
         <!-- <script type="text/javascript" src="{{ url_for('static', filename='mockup3.js') }}" ></script> -->
-        <link rel="stylesheet" type="text/css" href="../static/mockup1.css" />
-        <script language="JavaScript" type="text/javascript" src="../static/mockup3.js" ></script>
+        <!-- <link rel="stylesheet" type="text/css" href="../static/mockup1.css" /> -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mockup1.css') }}" />
+        <script type="text/javascript" src="{{ url_for('static', filename='mockup3.js') }}" ></script>
+
+        <!-- <script language="JavaScript" type="text/javascript" src="../static/mockup3.js" ></script> -->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
 
         <title>Find Songs Like</title>
 
