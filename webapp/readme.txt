@@ -19,14 +19,12 @@ Working features:
 -keep search bar in results page
 -implement enter key functionality
 - bug in genre search where one genre alone cannot be searched
+-implement enter key functionality for genre list
+-Display which song is being compared too in songs like function
+
 
 
 In progress:
-Display which song is being compared too in songs like function
--implement enter key functionality for genre list
 -highlight which tab user is currently in
--remove calendar, unrealistic
 
 Wishlist:
-- Calendar to sort songs by release date
-- autofill search bars (possible drop this goal)

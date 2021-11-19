@@ -141,6 +141,7 @@ def get_songs_like(song_search):
     song_list = []
 
     found_song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'dancaeability':0.0, 'energy':0.0, 'loudness':0.0, 'speechiness':0.0, 'acousticness':0.0, 'liveness':0.0, 'tempo':0.0, 'duration':0.0, 'valence':0.0}
+    formatted_found_song = song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'likeness':10}
 
     try:
         connection = get_connection()
@@ -149,6 +150,7 @@ def get_songs_like(song_search):
         for row in cursor:
             # print(row[1])
             found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
+            formatted_found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'likeness':10}
         cursor.close()
         connection.close()
     except Exception as e:
@@ -183,6 +185,6 @@ def get_songs_like(song_search):
     song_list = song_list[0:20]
     song_list.sort(reverse = boolean_sort_order, key=second_sort)
 
-    song_list.insert(0, found_song)
+    song_list.insert(0, formatted_found_song)
 
     return json.dumps(song_list)

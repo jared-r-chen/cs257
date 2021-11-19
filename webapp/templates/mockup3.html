@@ -26,9 +26,9 @@
            <input onkeyup="if(event.keyCode===13){submit.click()}"
            type="text" class = "search" id = 'search_item' placeholder="Song name"/> </br></br>
 
-           <label>Genre Search Bar</label> </br>
+           <!-- <label>Genre Search Bar</label> </br>
            <input onkeyup="if(event.keyCode===13){submit.click()}"
-           type="text" class = "search" placeholder="Genre search"/> </br></br>
+           type="text" class = "search" placeholder="Genre search"/> </br></br> -->
 
            <button onclick="find_songs_like();" id = "submit">Search</button>
 
@@ -54,14 +54,16 @@
               <input type="checkbox" id= "order-check" onclick="sort_results();">
               <label>Flip Sort Order </label>
 
-              <div class = "add-column">
+              <p id = 'search-song-name'></p>
+
+              <!-- <div class = "add-column">
                 <label>Add Column: </label>
                 <input type="text" placeholder="Column Name"/>
-              </div>
+              </div> -->
 
             </form>
           </div>
-          <p><table id="songs_table"></table></p>
+          <p><table id="songs-table"></table></p>
         </div>
 
       </div>

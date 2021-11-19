@@ -39,7 +39,7 @@
                          + '<td>' + 'Genre(s)' + '</td>'
                          + '<td>' + 'Likeness Score' + '</td>'
                          + '</tr>\n';
-     for (let i = 0; i < songs.length; i++) {
+     for (let i = 1; i < songs.length; i++) {
          //let song = songs[i];
          tableBody += '<tr>'
                          + '<td>' + songs[i].id + '</td>'
@@ -51,7 +51,7 @@
      }
 
      //document.getElementById("content").innerHTML = tableBody;
-    let songsTable = document.getElementById('songs_table');
+    let songsTable = document.getElementById('songs-table');
      if (songsTable) {
          songsTable.style.visibility = 'visible';
          songsTable.innerHTML = tableBody;
@@ -90,7 +90,7 @@
                          + '<td>' + 'Genre(s)' + '</td>'
                          + '<td>' + 'Likeness Score' + '</td>'
                          + '</tr>\n';
-     for (let i = 0; i < songs.length; i++) {
+     for (let i = 1; i < songs.length; i++) {
          //let song = songs[i];
          tableBody += '<tr>'
                          + '<td>' + songs[i].id + '</td>'
@@ -100,9 +100,10 @@
                          + '<td>' + songs[i].likeness + '</td>'
                          + '</tr>\n';
      }
-
-     //document.getElementById("content").innerHTML = tableBody;
-    let songsTable = document.getElementById('songs_table');
+    let searchSongLable = document.getElementById('search-song-name');
+    searchSongLable.innerHTML = "Song Used For Search: " + songs[0].name;
+     // document.getElementById("content").innerHTML = tableBody;
+    let songsTable = document.getElementById('songs-table');
     songsTable.innerHTML = '';
      if (songsTable) {
          songsTable.style.visibility = 'visible';
