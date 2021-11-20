@@ -1,40 +1,14 @@
 CS257 Software Design
 Winter 2021
-Jared Chen & Aaron Schondorf
+Professor Jeff Ondich
 
---END TO END FUNCTIONALITY--
+AUTHORS: Jared Chen & Aaron Schondorf
 
-The only thing that works right now is putting a search phrase into the song search bar and pressing the search button near the bottom of the block. This will return a table of results that include the index number, name of the song, artist name, ranking, and number of streams.
+DATA: Spotify top 200 Chats dataset for the 2020-2021 year.
 
---FIRST DRAFT--
+License: Data files © Original Authors
 
-Working features:
-- search database (by song name only)
-- sort results
-- flip order of results (greatest to least --> least to greatest or A-Z --> Z-A)
-- songs like function (by song name only, genre doesn't work yet)
-- help page is accessible 
--search by artist and/or artist and/or genre
--genre search in song-like function
--keep search bar in results page
--implement enter key functionality
-- bug in genre search where one genre alone cannot be searched
--implement enter key functionality for genre list
--Display which song is being compared too in songs like function
--highlight which tab user is currently in
--remove ID from results table
-- move extraneous files toe old_files
-- rename files to better naming conventions
--Create api/help route (endpoint documentation)
--update help.html	
--Populate api/help route (endpoint documentation)
+STATUS: To my knowledge everything should be working. The genre search is not as intuitive as I'd like. Changing the drop genre drop down will add a genre to your genre search (or using the enter key or pressing the add genre button while drop down is on a genre). When searching multiple genres, the results will display all songs that have any of the genres (a better version of this would allow you to choose between AND OR when selecting multiple genres).
 
 
-In progress:
--Remove config.py
-- comment code/clean code
-- Update readme.txt to final version
-
-
-
-Wishlist:
+NOTES: Hopefully you won't think(too much)!

@@ -81,14 +81,14 @@ def get_results():
         elif len(genre_list) > 1:
             genre_sql_code += "OR (genre = '" + item + "')"
 
-    query = '''SELECT DISTINCT song_id, name, artist, highest_pos, streams, genres_list
+    query = '''SELECT DISTINCT song_id, name, artist, highest_pos, streams, genres_list, UPPER(name)
       FROM songs
       JOIN genres
       ON song_id = genre_id
       WHERE UPPER(name) LIKE UPPER(''' + modified_song + ''')
       AND UPPER(artist) LIKE UPPER(''' + modified_artist + ''')
       ''' + genre_sql_code + '''
-      ORDER BY ''' + string_sort_by +''' ''' + string_sort_order + ''';'''
+      ORDER BY UPPER(''' + string_sort_by +''') ''' + string_sort_order + ''';'''
 
     song_list = []
 
@@ -178,9 +178,10 @@ def get_songs_like(song_search):
     except Exception as e:
         print(e, file=sys.stderr)
 
+    #first_sort sorts all results based on likeness score.
     def first_sort(e):
         return e['likeness']
-
+    #second_sort sorts all results based on user specified variable
     def second_sort(e):
         return e[string_sort_by]
 
@@ -195,6 +196,7 @@ def get_songs_like(song_search):
 
     return json.dumps(song_list)
 
+#api/help enpoint documentation
 @api.route('/help')
 def get_help():
     return flask.render_template('help.html')

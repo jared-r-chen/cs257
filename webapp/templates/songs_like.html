@@ -12,46 +12,33 @@
       <div class = "grid">
         <div class = "menu">
           <form>
-            <!-- <button class = "menu-button" formaction="./index.html">Index</button> -->
+            <!-- Menu bar at the top of the screen -->
             <button class = "menu-button" formaction="./">Song Search</button>
             <button class = "menu-current-page" onclick="location.reload();">Find Songs Like</button>
             <button class = "menu-button" formaction="./help-page">Help</button>
           </form>
         </div>
-
+        <!-- Contains elements to input search string -->
         <div class = "content" id = "content">
           <div class = "left-container">
-
            <label>Song Search Bar</label> </br>
            <input onkeyup="if(event.keyCode===13){submit.click()}"
            type="text" class = "search" id = 'search_item' placeholder="Song name"/> </br></br>
-
-           <!-- <label>Genre Search Bar</label> </br>
-           <input onkeyup="if(event.keyCode===13){submit.click()}"
-           type="text" class = "search" placeholder="Genre search"/> </br></br> -->
-
            <button onclick="find_songs_like();" id = "submit">Search</button>
-
           </form>
           </div>
         </div>
 
-
         <div>
+          <!-- Contain elements used to sort results -->
           <div class = "sort" id = "sort-block">
             <form>
               <label>Sort by: </label>
-              <!-- <input type="text" placeholder="Search"/> -->
               <select id="sort-tag" onchange="sort_results();">
                 <option value="name">Name</option>
                   <option value="artist">Artist</option>
                 <option value="likeness">Likeness Score</option>
                 <option value="genres_list">Genre(s)</option>
-
-                <!-- <option value="id">ID</option> -->
-
-
-
               </select>
 
               <input type="checkbox" id= "order-check" onclick="sort_results();">
@@ -59,13 +46,9 @@
 
               <p style="text-align:center" id = 'search-song-name' ></p>
 
-              <!-- <div class = "add-column">
-                <label>Add Column: </label>
-                <input type="text" placeholder="Column Name"/>
-              </div> -->
-
             </form>
           </div>
+          <!-- results are displayed here -->
           <p><table id="songs-table"></table></p>
         </div>
 

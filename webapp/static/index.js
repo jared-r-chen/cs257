@@ -3,25 +3,16 @@
  * Jared Chen & Aaron Scondorf, 1 November 2021
  */
 
- // Returns the base URL of the API, onto which endpoint
- // components can be appended.
-
- // window.onload = initialize;
- //
- // function initialize() {
- //     let element = document.getElementById('sort-tag');
- //     if (element) {
- //         element.onchange = sort_results;
- //     }
- // }
+//global variables
  let global_search_string = '';
  let global_artist_string = '';
  let global_genre_string = '';
 
 window.onload = initialize;
 
-
-
+/*
+ * This function get the base url thats used for other functions
+ */
  function getAPIBaseURL() {
      let baseURL = window.location.protocol
                      + '//' + window.location.hostname
@@ -30,6 +21,9 @@ window.onload = initialize;
      return baseURL;
  }
 
+/*
+ * This function loads genres into drop down menu
+ */
  function initialize(){
    let url = getAPIBaseURL() + '/load-genres';
 
@@ -37,15 +31,16 @@ window.onload = initialize;
 
    .then((response) => response.json())
    .then(function(genres) {
-    //console.log(songs);
+
     let genre_HTML_string = "";
     console.log(genres);
+    //This for loop adds all genres to a string that can be injected into the HTML
      for (let i = 0; i < genres.length; i++) {
        current_genre = genres[i].genre;
         genre_HTML_string += '<option value="' + current_genre + '">' + current_genre +'</option>'
 
      }
-     //document.getElementById("content").innerHTML = tableBody;
+     //inject HTML
     let genre_drop_down = document.getElementById('search_genre');
       genre_drop_down.innerHTML = genre_HTML_string;
       }
@@ -55,33 +50,46 @@ window.onload = initialize;
     });
  }
 
-
+ /*
+  * This function runs when a new genre is added. This function injects a text box
+  * into the html so the user knows what genres will be searched for. Additionally,
+  * the global_genre_string will have the genre added to it so it can be passed into
+  * the api as a single variable.
+  */
  function add_genre(){
-   let genre = document.getElementById('search_genre').value;
 
+   let genre = document.getElementById('search_genre').value;
+   //This if statement prevents the same genre from being added twice
    if(!global_genre_string.includes(genre)){
-     // console.log('should add item');
      genre_label = '<p class = "genre-item">' + genre + '</p>'
      let genre_block = document.getElementById('genre-block');
      genre_block.innerHTML += genre_label;
    }
-
+   //base case if global_genre_string is empty
    if(global_genre_string === ""){
      global_genre_string += genre;
    }
    else if(!global_genre_string.includes(genre)){
      global_genre_string += "," + genre;
    }
-   // console.log(global_genre_string);
  }
 
+/*
+ * Clears genre list
+ */
  function clear_genre(){
      document.getElementById('genre-block').innerHTML = '';
      global_genre_string = '';
  }
 
+ /*
+  * Very similar to search_song function. This function takes in sort variables
+  * in addition to search varibles in order to call the api and the same list but sorted
+  * in a different manner.
+  */
  function sort_results(){
    let search_song = global_search_string
+   //checking sort variables to see what to sort by
    let sort_tag = document.getElementById('sort-tag').value;
    let sort_order = 'ASC'
    if (document.getElementById('order-check').checked){
@@ -93,15 +101,11 @@ window.onload = initialize;
 
 
    fetch(url, {method: 'get'})
-
    .then((response) => response.json())
-
    .then(function(songs) {
-    //console.log(songs);
 
      let tableBody = '';
      tableBody += '<tr>'
-                     // + '<td>' + 'ID' + '</td>'
                      + '<td>' + 'Name' + '</td>'
                      + '<td>' + 'Artist' + '</td>'
                      + '<td>' + 'Highest Position' + '</td>'
@@ -109,9 +113,7 @@ window.onload = initialize;
                      + '<td>' + 'Genre(s)' + '</td>'
                      + '</tr>\n';
      for (let i = 0; i < songs.length; i++) {
-         //let song = songs[i];
          tableBody += '<tr>'
-                         // + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].highest_pos + '</td>'
@@ -119,7 +121,6 @@ window.onload = initialize;
                          + '<td>' + songs[i].genres_list + '</td>'
                          + '</tr>\n';
      }
-     //document.getElementById("content").innerHTML = tableBody;
     let songsTable = document.getElementById('songs-table');
     songsTable.innerHTML = '';
      if (songsTable) {
@@ -135,7 +136,10 @@ window.onload = initialize;
  }
 
 
-
+ /*
+  * This function takes in user inputted parameters and puts a results list
+  * onto the screen.
+  */
  function search_song(){
    /*these two lines will reset the sorting tools if the submit search button is
    pressed when no new values have been inputted.
@@ -152,19 +156,14 @@ window.onload = initialize;
    let url = getAPIBaseURL() + '/results' + '?song=' + search_song + '&artist='
    + search_artist + '&genres=' + global_genre_string;
 
-   //document.getElementById('content').innerHTML = '';
    document.getElementById('sort-block').style.display = 'block';
 
    fetch(url, {method: 'get'})
-
    .then((response) => response.json())
-
    .then(function(songs) {
-    //console.log(songs);
 
      let tableBody = '';
      tableBody += '<tr>'
-                     // + '<td>' + 'ID' + '</td>'
                      + '<td>' + 'Name' + '</td>'
                      + '<td>' + 'Artist' + '</td>'
                      + '<td>' + 'Highest Position' + '</td>'
@@ -172,9 +171,7 @@ window.onload = initialize;
                      + '<td>' + 'Genre(s)' + '</td>'
                      + '</tr>\n';
      for (let i = 0; i < songs.length; i++) {
-         //let song = songs[i];
          tableBody += '<tr>'
-                         // + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].highest_pos + '</td>'
@@ -182,7 +179,6 @@ window.onload = initialize;
                          + '<td>' + songs[i].genres_list + '</td>'
                          + '</tr>\n';
      }
-     //document.getElementById("content").innerHTML = tableBody;
     let songsTable = document.getElementById('songs-table');
      if (songsTable) {
          songsTable.style.visibility = 'visible';

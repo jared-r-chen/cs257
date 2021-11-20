@@ -69,10 +69,6 @@ th, td {
   border-color: black;
 }
 
-.calender{
-  width: 100%;
-}
-
 .search{
   width: 75%;
 }
@@ -97,4 +93,18 @@ th, td {
   background-color: #5490ff;
   padding: 5px;
   margin-bottom: 1em;
+}
+
+.help-text{
+  text-align: left;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 5px;
+}
+
+.help-header{
+  text-align: left;
+  margin-left: 2%;
+  margin-right: 2%;
+  padding: 5px;
 }

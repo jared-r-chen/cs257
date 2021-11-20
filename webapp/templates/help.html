@@ -7,6 +7,8 @@
     <pre>Spotify API: endpoint reference
 All responses are in JSON
 
+<!-- thank you patrick -->
+
 REQUEST: /
 RESPONSE:
     This is the home page where songs can be searched for.
@@ -26,7 +28,7 @@ REQUEST: /songs-like/{SEARCH_STRING}[?key={SORT_TAG}&order={SORT_ORDER}]
 RESPONSE:
   A list of 20 songs that have the highest "likeness" score. This score is generated based on
   attributes like duration, tempo, instrimentation etc. The list is by default sorted by likeness
-  score.
+  score. The higher the score the more similar the song is to the search-song.
     </pre>
 </body>
 </html>

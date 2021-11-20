@@ -3,11 +3,12 @@
  * Jared Chen & Aaron Scondorf, 14 November 2021
  */
 
- // Returns the base URL of the API, onto which endpoint
- // components can be appended.
+
 
  let global_search_string = '';
 
+ // Returns the base URL of the API, onto which endpoint
+ // components can be appended.
  function getAPIBaseURL() {
      let baseURL = window.location.protocol
                      + '//' + window.location.hostname
@@ -16,9 +17,12 @@
      return baseURL;
  }
 
+/*
+ * Sorts the results of the find-songs-like function
+ */
  function sort_results(){
-   //generate url
    let search_string = global_search_string
+   //sets values for sorting parameters
    let sort_tag = document.getElementById('sort-tag').value;
    let sort_order = 'ASC'
    if (document.getElementById('order-check').checked){
@@ -61,7 +65,9 @@
     });
  }
 
-
+/*
+ *This function finds songs like a given search phrase parameter. 
+ */
  function find_songs_like(){
    //generate url for api
    let search_string = document.getElementById('search_item').value;

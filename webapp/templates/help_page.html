@@ -1,44 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- <meta charset="UTF-8"> -->
         <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-        <!-- <link rel="stylesheet" type="text/css" href="../static/mockup1.css" /> -->
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}" />
         <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
         <title>Help</title>
 
     <body>
-       <!-- <h1>Search screen, mockup1.html </h1> -->
        <div class = "grid">
-
+         <!-- menu at the top of the screen -->
          <div class = "menu">
            <form>
-             <!-- <button class = "menu-button" formaction="./index.html">Index</button> -->
              <button class = "menu-button" formaction="./">Song Search</button>
              <button class = "menu-button" formaction="./songs-like">Find Songs Like</button>
              <button class = "menu-current-page" formaction="./help-page">Help</button>
            </form>
+           <!-- content of help page -->
+           <h3 class = "help-header">Song Search</h3>
 
-           <h3>Song Search</h3>
-
-
-         <p>
-           Search for a given song, artist, or genre using the given search bar. Songs will automatically be listed in alphabetical order.
-         </p>
-         <p>
-         Use the sort by features in the top left to change the sorting of the songs.
-         </p>
-
-         <h3>Find Songs Like</h3>
-
-
-       <p>
-         Search for songs closely related to a given song. This will generate the song's likeness score, which is based on criteria such as acousticness, tempo, and duration.
-       </p>
-       <p>
-       The top 20 most similar songs will automatically be listed in order of their likeness score. Use the sort by features in the top left to change the sorting of the songs.
-       </p>
-
+             <p class = "help-text">
+               Search for a given song, artist, or genre(s) using the given search bar. Songs will automatically be listed
+              in alphabetical order. When searching for multiple genres, all songs that contain any of the the genres
+              will be included in the results  table. Use the sort by features in the top left to change the sorting
+              of the songs.
+             </p>
+         <h3 class = "help-header">Find Songs Like</h3>
+           <p class = "help-text">
+             Search for songs closely related to a given song. This will generate the song's likeness score,
+            which is based on criteria such as acousticness, tempo, and duration. The higher the score, the more
+            similar the song is to the given song. The top 20 most similar songs will automatically be listed
+            in order of their likeness score. Use the sort by features in the top left to change the sorting of the songs.
+           </p>
     </body>
 </html>
