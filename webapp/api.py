@@ -188,3 +188,7 @@ def get_songs_like(song_search):
     song_list.insert(0, formatted_found_song)
 
     return json.dumps(song_list)
+
+@api.route('/help')
+def get_help():
+    return flask.render_template('help.html')

@@ -18,9 +18,11 @@ def home():
 def songs_like():
     return flask.render_template('songs_like.html')
 
-@app.route('/help')
+@app.route('/help-page')
 def help():
     return flask.render_template('help_page.html')
+
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

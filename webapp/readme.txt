@@ -23,16 +23,17 @@ Working features:
 -Display which song is being compared too in songs like function
 -highlight which tab user is currently in
 -remove ID from results table
-
+- move extraneous files toe old_files
+- rename files to better naming conventions
+-Create api/help route (endpoint documentation)
+-update help.html	
 
 In progress:
--Create api/help route (endpoint documentation)
+-Populate api/help route (endpoint documentation)
 -Remove config.py
 - comment code/clean code
 - Update readme.txt to final version
-- move extraneous files toe old_files
-- rename files to better naming conventions
--update help.html	
+
 
 
 Wishlist:
