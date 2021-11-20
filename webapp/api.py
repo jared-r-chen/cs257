@@ -127,7 +127,6 @@ def get_songs_like(song_search):
         boolean_sort_order = True
 
 
-
     modified_song = "'%%" + song_search + "%%'"
 
     query_1 = '''SELECT song_id, name, artist, attributes_id, dancaeability, energy, loudness, speechiness, acousticness, liveness, tempo, duration, valence, genres_list
@@ -140,15 +139,16 @@ def get_songs_like(song_search):
 
     song_list = []
 
+    #Instantiate song that is being searched for in both raw and formatted form
     found_song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'dancaeability':0.0, 'energy':0.0, 'loudness':0.0, 'speechiness':0.0, 'acousticness':0.0, 'liveness':0.0, 'tempo':0.0, 'duration':0.0, 'valence':0.0}
     formatted_found_song = song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'likeness':10}
 
+    #Query to find the search song
     try:
         connection = get_connection()
         cursor = connection.cursor()
         cursor.execute(query_1)
         for row in cursor:
-            # print(row[1])
             found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
             formatted_found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'likeness':10}
         cursor.close()
@@ -156,8 +156,7 @@ def get_songs_like(song_search):
     except Exception as e:
         print(e, file=sys.stderr)
 
-    # print(found_song['artist'])
-
+    #Looping through all songs to generate the likeness score that is a comparison between each song and the song queried above
     try:
         connection = get_connection()
         cursor = connection.cursor()
@@ -177,14 +176,15 @@ def get_songs_like(song_search):
         return e['likeness']
 
     def second_sort(e):
-        # print(string_sort_by)
         return e[string_sort_by]
 
-
+    #Sort by likeness and slice to get the 20 most similar songs
     song_list.sort(reverse=True, key=first_sort)
     song_list = song_list[0:20]
+    #Sort based on user's input
     song_list.sort(reverse = boolean_sort_order, key=second_sort)
 
+    #Add original song to beginning of the list so we can display it
     song_list.insert(0, formatted_found_song)
 
     return json.dumps(song_list)
