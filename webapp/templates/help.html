@@ -1,42 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Movie API reference</title>
+    <title>Spotify top 200 songs API reference</title>
 </head>
 <body>
-    <pre>Movie API: endpoint reference
+    <pre>Spotify API: endpoint reference
 All responses are in JSON
 
 REQUEST: /
 RESPONSE:
-    A greeting from this API to you.
+    This is the home page where songs can be searched for.
 
 REQUEST: /help
 RESPONSE:
     This message
 
-REQUEST: /actor/{last_name_prefix}
+
+REQUEST: /results[?song={SONG}&artist={ARTIST}&genre={GENRE}&key={SORT_TAG}&order={SORT_ORDER}]
 RESPONSE:
-    A list of actors whose last names begin (case-insensitively) with the specified prefix.
-    Each actor is represented as a dictionary with keys "last_name" and "first_name".
-    (Yes, this is a super-rich dataset, why do you ask?)
+    A list of songs that fit all search criteria. If a criteria is missing, it is not
+    used in the search query. By default, this list is sorted alphabetical by song name.
 
-REQUEST: /movies[?genre={GENRE}&amp;start_year={STARTYEAR}&amp;end_year={ENDYEAR}]
-    A list of movies matching the specified GET parameters. If genre={GENRE}
-
-      start_year, int: reject any movie released earlier than this year
-      end_year, int: reject any movie released later than this year
-      genre: reject any movie whose genre does not match this genre exactly
-
-    For example:
-
-        /movies?start_year=1980&amp;genre=thriller
-
-    will return a list of all thriller movies released in 1980 or later.
-
-        /movies
-
-    will return a list of all the movies in the dataset.
+REQUEST: /songs-like/{SEARCH_STRING}[?key={SORT_TAG}&order={SORT_ORDER}]
+RESPONSE:
+  A list of 20 songs that have the highest "likeness" score. This score is generated based on
+  attributes like duration, tempo, instrimentation etc. The list is by default sorted by likeness
+  score.
     </pre>
 </body>
 </html>
