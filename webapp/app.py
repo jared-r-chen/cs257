@@ -16,11 +16,11 @@ def home():
 
 @app.route('/songs-like')
 def songs_like():
-    return flask.render_template('mockup3.html')
+    return flask.render_template('songs_like.html')
 
 @app.route('/help')
 def help():
-    return flask.render_template('mockup4.html')
+    return flask.render_template('help_page.html')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
