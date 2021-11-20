@@ -101,7 +101,7 @@
                          + '</tr>\n';
      }
     let searchSongLable = document.getElementById('search-song-name');
-    searchSongLable.innerHTML = "Song Used For Search: " + songs[0].name;
+    searchSongLable.innerHTML = "Song Used For Search: " + songs[0].name + " by " + songs[0].artist;
      // document.getElementById("content").innerHTML = tableBody;
     let songsTable = document.getElementById('songs-table');
     songsTable.innerHTML = '';
