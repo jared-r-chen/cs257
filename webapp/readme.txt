@@ -27,6 +27,7 @@ Working features:
 In progress:
 -remove ID from results table
 -Create api/help route (endpoint documentation)
+-Remove config.py
 - comment code/clean code
 - Update readme.txt to final version
 - move extraneous files toe old_files
