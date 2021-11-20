@@ -27,9 +27,10 @@ Working features:
 - rename files to better naming conventions
 -Create api/help route (endpoint documentation)
 -update help.html	
+-Populate api/help route (endpoint documentation)
+
 
 In progress:
--Populate api/help route (endpoint documentation)
 -Remove config.py
 - comment code/clean code
 - Update readme.txt to final version
