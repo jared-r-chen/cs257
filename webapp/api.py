@@ -148,11 +148,11 @@ def get_songs_like(song_search):
         connection = get_connection()
         cursor = connection.cursor()
         cursor.execute(query_1)
-        for row in cursor:
-            found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4],
-             'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9],
-             'tempo':row[10], 'duration':row[11], 'valence':row[12]}
-            formatted_found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'likeness':10}
+        row = cursor.fetchone()
+        found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4],
+         'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9],
+         'tempo':row[10], 'duration':row[11], 'valence':row[12]}
+        formatted_found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'likeness':10}
         cursor.close()
         connection.close()
     except Exception as e:
