@@ -26,12 +26,13 @@ def create_songs():
                 streams = streams.replace(',', '')
 
                 followers = row[7].strip(' ')
-                current_genre = row[9].strip(' ');
+                current_genre = row[9].strip(' ')
                 spotify_id = row[8].strip(' ')
                 release_date = row[10].strip(' ')
                 popularity = row[12].strip(' ')
 
-                current_genre = current_genre.strip('[]');
+                current_genre = current_genre.strip('[]')
+                current_genre = current_genre.replace("'", "")
                 if not current_genre:
                     current_genre = 'NA'
 
