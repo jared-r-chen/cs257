@@ -19,9 +19,11 @@ def get_connection():
                             user=config.user,
                             password=config.password)
 
-
 @api.route('/load-genres')
 def load_genres():
+    '''Loads all genres from database and returns it in json formate. used to populate
+    The drop down genre search.'''
+
     query = '''  SELECT DISTINCT genre
         FROM genres
         ORDER BY genre;'''
@@ -46,6 +48,9 @@ def load_genres():
 
 @api.route('/results')
 def get_results():
+    '''This function takes in all potential parameters given by user and returns a
+    json formate dictionary of all songs that match those parameters.'''
+
     song_search = flask.request.args.get('song')
     artist_search = flask.request.args.get('artist')
     genres = flask.request.args.get('genres')
@@ -57,27 +62,24 @@ def get_results():
     string_sort_by = str(sort_by)
     string_sort_order = str(sort_order)
 
-
-
+    #set default values for sorting in sql query
     if sort_by is None:
         string_sort_by = 'name'
     if sort_order is None:
         string_sort_order = 'ASC'
 
-
+    #Modifying search string so they can be added to sql query
     modified_song = "'%%" + string_song_search + "%%'"
     modified_artist = "'%%" + string_artist + "%%'"
     genre_sql_code = ''
     genre_list = string_genres.split(",")
 
-    # print('test')
-    # print(len(genre_list))
+    #parses genre_list so all genres can be searcehd for.
     for item in genre_list:
         if genre_sql_code == '' and item != '':
             genre_sql_code += "AND (genre = '" + item + "') "
         elif len(genre_list) > 1:
             genre_sql_code += "OR (genre = '" + item + "')"
-    # print(modified_song)
 
     query = '''SELECT DISTINCT song_id, name, artist, highest_pos, streams, genres_list
       FROM songs
@@ -87,8 +89,6 @@ def get_results():
       AND UPPER(artist) LIKE UPPER(''' + modified_artist + ''')
       ''' + genre_sql_code + '''
       ORDER BY ''' + string_sort_by +''' ''' + string_sort_order + ''';'''
-
-    # print(query)
 
     song_list = []
 
@@ -105,12 +105,11 @@ def get_results():
     except Exception as e:
         print(e, file=sys.stderr)
 
-    # print(song_list)
-
     return json.dumps(song_list)
 
 @api.route('/songs-like/<song_search>')
 def get_songs_like(song_search):
+    '''This returns a json formatted dictionary of 20 songs with the highest likeness score.'''
     sort_by = flask.request.args.get('key')
     sort_order = flask.request.args.get('order')
     string_sort_by = str(sort_by)
@@ -140,7 +139,8 @@ def get_songs_like(song_search):
     song_list = []
 
     #Instantiate song that is being searched for in both raw and formatted form
-    found_song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'dancaeability':0.0, 'energy':0.0, 'loudness':0.0, 'speechiness':0.0, 'acousticness':0.0, 'liveness':0.0, 'tempo':0.0, 'duration':0.0, 'valence':0.0}
+    found_song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'dancaeability':0.0, 'energy':0.0,
+     'loudness':0.0, 'speechiness':0.0, 'acousticness':0.0, 'liveness':0.0, 'tempo':0.0, 'duration':0.0, 'valence':0.0}
     formatted_found_song = song = {'id':0,'name':'none','artist':'none', 'genres_list':'none', 'likeness':10}
 
     #Query to find the search song
@@ -149,7 +149,9 @@ def get_songs_like(song_search):
         cursor = connection.cursor()
         cursor.execute(query_1)
         for row in cursor:
-            found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4], 'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9], 'tempo':row[10], 'duration':row[11], 'valence':row[12]}
+            found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'dancaeability':row[4],
+             'energy':row[5], 'loudness':row[6], 'speechiness':row[7], 'acousticness':row[8], 'liveness':row[9],
+             'tempo':row[10], 'duration':row[11], 'valence':row[12]}
             formatted_found_song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list':row[13], 'likeness':10}
         cursor.close()
         connection.close()
@@ -163,7 +165,11 @@ def get_songs_like(song_search):
         cursor.execute(query_2)
         for row in cursor:
             if row[0] != found_song['id']:
-                likeness = (1.0-abs(float(found_song['dancaeability'])-float(row[4])))+(1.0-abs(float(found_song['energy'])-float(row[5])))+(26.8-abs(float(found_song['loudness'])-float(row[6])))/30+(1.0-abs(float(found_song['speechiness'])-float(row[7])))+(1.0-abs(float(found_song['acousticness'])-float(row[8])))/2+(1.0-abs(float(found_song['liveness'])-float(row[9])))/3+(160.0-abs(float(found_song['tempo'])-float(row[10])))/640+(558000.0-abs(float(found_song['duration'])-float(row[11])))/3348000+(1.0-abs(float(found_song['valence'])-float(row[12])))/10
+                likeness = (1.0-abs(float(found_song['dancaeability'])-float(row[4])))+(1.0-abs(float(found_song['energy'])
+                -float(row[5])))+(26.8-abs(float(found_song['loudness'])-float(row[6])))/30+(1.0-abs(float(found_song['speechiness'])
+                -float(row[7])))+(1.0-abs(float(found_song['acousticness'])-float(row[8])))/2+(1.0-abs(float(found_song['liveness'])
+                -float(row[9])))/3+(160.0-abs(float(found_song['tempo'])-float(row[10])))/640+(558000.0-abs(float(found_song['duration'])
+                -float(row[11])))/3348000+(1.0-abs(float(found_song['valence'])-float(row[12])))/10
                 song = {'id':row[0],'name':row[1],'artist':row[2], 'genres_list': row[13], 'likeness':round(likeness,4)}
                 song_list.append(song)
 

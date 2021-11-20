@@ -20,6 +20,7 @@ REQUEST: /results[?song={SONG}&artist={ARTIST}&genre={GENRE}&key={SORT_TAG}&orde
 RESPONSE:
     A list of songs that fit all search criteria. If a criteria is missing, it is not
     used in the search query. By default, this list is sorted alphabetical by song name.
+    if mutiple genres are present, the results list will icnlude any song that matches any genre.
 
 REQUEST: /songs-like/{SEARCH_STRING}[?key={SORT_TAG}&order={SORT_ORDER}]
 RESPONSE:
