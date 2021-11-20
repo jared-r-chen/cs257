@@ -17,6 +17,7 @@
  }
 
  function sort_results(){
+   //generate url
    let search_string = global_search_string
    let sort_tag = document.getElementById('sort-tag').value;
    let sort_order = 'ASC'
@@ -29,20 +30,17 @@
    fetch(url, {method: 'get'})
    .then((response) => response.json())
    .then(function(songs) {
-    //console.log(songs);
 
+     //generate table
      let tableBody = '';
      tableBody += '<tr>'
-                         // + '<td>' + 'ID' + '</td>'
                          + '<td>' + 'Name' + '</td>'
                          + '<td>' + 'Artist' + '</td>'
                          + '<td>' + 'Genre(s)' + '</td>'
                          + '<td>' + 'Likeness Score' + '</td>'
                          + '</tr>\n';
      for (let i = 1; i < songs.length; i++) {
-         //let song = songs[i];
          tableBody += '<tr>'
-                         // + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].genres_list + '</td>'
@@ -50,12 +48,11 @@
                          + '</tr>\n';
      }
 
-     //document.getElementById("content").innerHTML = tableBody;
+     //display table
     let songsTable = document.getElementById('songs-table');
      if (songsTable) {
          songsTable.style.visibility = 'visible';
          songsTable.innerHTML = tableBody;
-         //document.getElementById("content").style = "";
      }
       }
     )
@@ -66,49 +63,45 @@
 
 
  function find_songs_like(){
-   // event.preventDefault();
-   // let url = getAPIBaseURL() + '/results/';
+   //generate url for api
    let search_string = document.getElementById('search_item').value;
    global_search_string = search_string;
 
-   //console.log(search_string);
    let url = getAPIBaseURL() + '/songs-like/' + search_string;
 
-   //document.getElementById('content').innerHTML = '';
    document.getElementById('sort-block').style.display = 'block';
 
    fetch(url, {method: 'get'})
    .then((response) => response.json())
    .then(function(songs) {
-    //console.log(songs);
 
+     //generate table
      let tableBody = '';
      tableBody += '<tr>'
-                         // + '<td>' + 'ID' + '</td>'
                          + '<td>' + 'Name' + '</td>'
                          + '<td>' + 'Artist' + '</td>'
                          + '<td>' + 'Genre(s)' + '</td>'
                          + '<td>' + 'Likeness Score' + '</td>'
                          + '</tr>\n';
      for (let i = 1; i < songs.length; i++) {
-         //let song = songs[i];
          tableBody += '<tr>'
-                         // + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].genres_list + '</td>'
                          + '<td>' + songs[i].likeness + '</td>'
                          + '</tr>\n';
      }
+
+     //Create lable to display song used for search
     let searchSongLable = document.getElementById('search-song-name');
     searchSongLable.innerHTML = "Song Used For Search: " + songs[0].name + " by " + songs[0].artist;
-     // document.getElementById("content").innerHTML = tableBody;
+
+    //display table
     let songsTable = document.getElementById('songs-table');
     songsTable.innerHTML = '';
      if (songsTable) {
          songsTable.style.visibility = 'visible';
          songsTable.innerHTML = tableBody;
-         //document.getElementById("content").style = "";
      }
       }
     )
