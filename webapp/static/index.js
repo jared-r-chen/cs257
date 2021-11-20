@@ -101,7 +101,7 @@ window.onload = initialize;
 
      let tableBody = '';
      tableBody += '<tr>'
-                     + '<td>' + 'ID' + '</td>'
+                     // + '<td>' + 'ID' + '</td>'
                      + '<td>' + 'Name' + '</td>'
                      + '<td>' + 'Artist' + '</td>'
                      + '<td>' + 'Highest Position' + '</td>'
@@ -111,7 +111,7 @@ window.onload = initialize;
      for (let i = 0; i < songs.length; i++) {
          //let song = songs[i];
          tableBody += '<tr>'
-                         + '<td>' + songs[i].id + '</td>'
+                         // + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].highest_pos + '</td>'
@@ -137,8 +137,12 @@ window.onload = initialize;
 
 
  function search_song(){
-   // event.preventDefault();
-   // let url = getAPIBaseURL() + '/results/';
+   /*these two lines will reset the sorting tools if the submit search button is
+   pressed when no new values have been inputted.
+   */
+   document.getElementById('sort-tag').value = "name";
+   document.getElementById('order-check').checked = false;
+
    let search_song = document.getElementById('search_song').value;
    let search_artist = document.getElementById('search_artist').value;
 
@@ -160,7 +164,7 @@ window.onload = initialize;
 
      let tableBody = '';
      tableBody += '<tr>'
-                     + '<td>' + 'ID' + '</td>'
+                     // + '<td>' + 'ID' + '</td>'
                      + '<td>' + 'Name' + '</td>'
                      + '<td>' + 'Artist' + '</td>'
                      + '<td>' + 'Highest Position' + '</td>'
@@ -170,7 +174,7 @@ window.onload = initialize;
      for (let i = 0; i < songs.length; i++) {
          //let song = songs[i];
          tableBody += '<tr>'
-                         + '<td>' + songs[i].id + '</td>'
+                         // + '<td>' + songs[i].id + '</td>'
                          + '<td>' + songs[i].name + '</td>'
                          + '<td>' + songs[i].artist + '</td>'
                          + '<td>' + songs[i].highest_pos + '</td>'

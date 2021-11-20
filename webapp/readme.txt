@@ -22,16 +22,17 @@ Working features:
 -implement enter key functionality for genre list
 -Display which song is being compared too in songs like function
 -highlight which tab user is currently in
+-remove ID from results table
 
 
 In progress:
--remove ID from results table
 -Create api/help route (endpoint documentation)
 -Remove config.py
 - comment code/clean code
 - Update readme.txt to final version
 - move extraneous files toe old_files
-- rename files to better naming conventions	
+- rename files to better naming conventions
+-update help.html	
 
 
 Wishlist:
