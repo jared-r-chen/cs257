@@ -66,11 +66,12 @@
  }
 
 /*
- *This function finds songs like a given search phrase parameter. 
+ *This function finds songs like a given search phrase parameter.
  */
  function find_songs_like(){
    //generate url for api
    let search_string = document.getElementById('search_item').value;
+   let sort_tag = document.getElementById('sort-tag').value = 'likeness';
    global_search_string = search_string;
 
    let url = getAPIBaseURL() + '/songs-like/' + search_string;
