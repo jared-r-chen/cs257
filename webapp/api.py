@@ -64,7 +64,10 @@ def get_results():
 
     #set default values for sorting in sql query
     if sort_by is None:
-        string_sort_by = 'name'
+        string_sort_by = 'UPPER(name)'
+    elif string_sort_by == 'artist' or string_sort_by == 'name' or string_sort_by == 'genres_list':
+        string_sort_by = 'UPPER(' + string_sort_by + ')'
+
     if sort_order is None:
         string_sort_order = 'ASC'
 
@@ -81,14 +84,15 @@ def get_results():
         elif len(genre_list) > 1:
             genre_sql_code += "OR (genre = '" + item + "')"
 
-    query = '''SELECT DISTINCT song_id, name, artist, highest_pos, streams, genres_list, UPPER(name)
+    query = '''SELECT DISTINCT song_id, name, artist, highest_pos, streams, genres_list, UPPER(name),
+     UPPER(artist), UPPER(genres_list)
       FROM songs
       JOIN genres
       ON song_id = genre_id
       WHERE UPPER(name) LIKE UPPER(''' + modified_song + ''')
       AND UPPER(artist) LIKE UPPER(''' + modified_artist + ''')
       ''' + genre_sql_code + '''
-      ORDER BY UPPER(''' + string_sort_by +''') ''' + string_sort_order + ''';'''
+      ORDER BY ''' + string_sort_by +''' ''' + string_sort_order + ''';'''
 
     song_list = []
 
